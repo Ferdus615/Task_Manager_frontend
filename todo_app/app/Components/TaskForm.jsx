@@ -1,3 +1,6 @@
+"use client";
+import React from "react";
+
 const TaskForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex justify-center gap-2">
