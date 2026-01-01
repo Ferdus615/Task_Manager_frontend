@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Sidebar from "./Components/Sidebar";
+import Title from "./Components/Title";
 
 // Helper functions
 const getLocalData = (key) => {
@@ -43,14 +45,17 @@ function Page() {
   // Save changes
   useEffect(() => {
     if (mounted) saveLocalData("tasks", tasks);
+    console.log(`Tasks Array: `, tasks);
   }, [tasks, mounted]);
 
   useEffect(() => {
     if (mounted) saveLocalData("archive", archiveTask);
+    console.log(`Archived Array: `, archiveTask);
   }, [archiveTask, mounted]);
 
   useEffect(() => {
     if (mounted) saveLocalData("trash", deleteTask);
+    console.log(`Deleted Array: `, deleteTask);
   }, [deleteTask, mounted]);
 
   const handleTitle = (e) => setTitle(e.target.value);
@@ -150,38 +155,14 @@ function Page() {
     );
 
   return (
-    <div className="flex h-screen w-screen bg-[#0e141b]">
+    <div className="flex h-screen w-screen">
       {/* Sidebar */}
-      <aside className="flex flex-col min-w-32 gap-5 p-5 bg-[#101720]">
-        <div className="flex justify-center items-center">
-          <Image src="/logo.svg" height={50} width={40} alt="logo" />
-        </div>
-        <a
-          href=""
-          className="text-sm pt-1 flex gap-2 items-center font-extralight cursor-pointer"
-        >
-          <Image src="/add.svg" height={18} width={18} alt="Add task" />
-          <span>New task</span>
-        </a>
-        <a
-          href="/archiver"
-          className="text-sm pt-1 flex gap-2 items-center font-extralight cursor-pointer"
-        >
-          <Image src="/archiveBox.svg" height={18} width={18} alt="Archiver" />
-          <span>Archiver</span>
-        </a>
-        <a
-          href="/trash"
-          className="text-sm pt-1 flex gap-2 items-center font-extralight cursor-pointer"
-        >
-          <Image src="/trash.svg" height={18} width={18} alt="Trash" />
-          <span>Trash</span>
-        </a>
-      </aside>
+      <Sidebar />
 
       {/* Main content */}
       <div className="flex-grow p-5 overflow-y-auto">
-        <h1 className="text-center text-3xl font-medium mb-10">My Todo List</h1>
+        <Title />
+
         <form onSubmit={handleSubmit} className="flex justify-center gap-2">
           <input
             placeholder="Enter task title..."
@@ -197,7 +178,7 @@ function Page() {
           />
           <button
             type="submit"
-            className="border border-zinc-500 bg-emerald-700 hover:bg-emerald-800 rounded-sm px-3 py-1 text-sm"
+            className="border border-zinc-500 text-black font-medium bg-emerald-200 hover:bg-emerald-300 rounded-sm px-3 py-1 text-sm"
           >
             Add Task
           </button>
