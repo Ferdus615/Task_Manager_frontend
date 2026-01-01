@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
+import TaskForm from "./Components/TaskForm";
 
 // Helper functions
 const getLocalData = (key) => {
@@ -58,8 +59,8 @@ function Page() {
     console.log(`Deleted Array: `, deleteTask);
   }, [deleteTask, mounted]);
 
-  const handleTitle = (e) => setTitle(e.target.value);
-  const handleDesc = (e) => setDesc(e.target.value);
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleDescChange = (e) => setDesc(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -161,28 +162,15 @@ function Page() {
 
       {/* Main content */}
       <div className="flex-grow p-5 overflow-y-auto">
-        <Title />
+        <Title title={"My ToDo List"} />
 
-        <form onSubmit={handleSubmit} className="flex justify-center gap-2">
-          <input
-            placeholder="Enter task title..."
-            className="border border-zinc-500 rounded-sm w-60 p-1 text-sm bg-transparent"
-            value={title}
-            onChange={handleTitle}
-          />
-          <input
-            placeholder="Enter description..."
-            className="border border-zinc-500 rounded-sm w-60 p-1 text-sm bg-transparent"
-            value={desc}
-            onChange={handleDesc}
-          />
-          <button
-            type="submit"
-            className="border border-zinc-500 text-black font-medium bg-emerald-200 hover:bg-emerald-300 rounded-sm px-3 py-1 text-sm"
-          >
-            Add Task
-          </button>
-        </form>
+        <TaskForm
+          onSubmit={handleSubmit}
+          title={title}
+          desc={desc}
+          onTitleChange={handleTitleChange}
+          onDescChange={handleDescChange}
+        />
 
         <div>{renderTask}</div>
       </div>
