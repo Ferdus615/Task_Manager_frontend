@@ -5,6 +5,7 @@ import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
 import TaskCard from "./Components/TaskCard";
+import TaskList from "./Components/TaskList";
 
 // Helper functions
 const getLocalData = (key) => {
@@ -110,24 +111,24 @@ function Page() {
     );
   }
 
-  let renderTask =
-    tasks.length === 0 ? (
-      <p className="text-center mt-10 text-zinc-500">
-        No tasks yet! Add one above.
-      </p>
-    ) : (
-      <div className="flex flex-wrap gap-5 mt-10">
-        {tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            task={task}
-            completedHandler={CompletedHandler}
-            archivedHandler={archivedHandler}
-            deletedHandler={deletedHandler}
-          />
-        ))}
-      </div>
-    );
+  // let renderTask =
+  //   tasks.length === 0 ? (
+  //     <p className="text-center mt-10 text-zinc-500">
+  //       No tasks yet! Add one above.
+  //     </p>
+  //   ) : (
+  //     <div className="flex flex-wrap gap-5 mt-10">
+  //       {tasks.map((task) => (
+  //         <TaskCard
+  //           key={task.id}
+  //           task={task}
+  //           completedHandler={CompletedHandler}
+  //           archivedHandler={archivedHandler}
+  //           deletedHandler={deletedHandler}
+  //         />
+  //       ))}
+  //     </div>
+  //   );
 
   return (
     <div className="flex h-screen w-screen">
@@ -146,7 +147,14 @@ function Page() {
           onDescChange={handleDescChange}
         />
 
-        <div>{renderTask}</div>
+        {/* <div>{renderTask}</div> */}
+
+        <TaskList
+          tasks={tasks}
+          completedHandler={CompletedHandler}
+          archivedHandler={archivedHandler}
+          deletedHandler={deletedHandler}
+        />
       </div>
     </div>
   );
