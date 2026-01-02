@@ -41,7 +41,7 @@ const Sidebar = () => {
             className=""
           />
         </div>
-        <span className="text-md font-light text-white">ToDoList</span>
+        <span className="text-md font-light">ToDoList</span>
       </div>
 
       {/* Navigation */}
@@ -55,8 +55,8 @@ const Sidebar = () => {
               href={item.href}
               className={`flex items-center gap-1 rounded-lg transition-all duration-200 ${
                 isActive
-                  ? "bg-green-700/30 text-green-400"
-                  : "hover:bg-zinc-800/50 text-zinc-300"
+                  ? "bg-blue-500/50"
+                  : "hover:bg-blue-800/30"
               }`}
             >
               <div className="p-2 rounded-md">
@@ -74,13 +74,13 @@ const Sidebar = () => {
       </nav>
 
       {/* User Information */}
-      <div className="mt-auto pt-6 border-t border-zinc-800">
+      <div className="mt-auto pt-6 border-t border-blue-800/50">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-full bg-green-700/30 flex items-center justify-center">
-            <span className="font-bold text-green-400">U</span>
+          <div className="h-10 w-10 rounded-full bg-blue-700/30 flex items-center justify-center">
+            <span className="font-bold text-blue-500">U</span>
           </div>
           <div>
-            <p className="font-medium text-white">User Name</p>
+            <p className="font-medium">User Name</p>
             <p className="text-xs text-zinc-400">user@example.com</p>
           </div>
         </div>

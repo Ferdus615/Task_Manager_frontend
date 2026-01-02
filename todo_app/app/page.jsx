@@ -4,6 +4,8 @@ import Image from "next/image";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
+import TaskCard from "./Components/TaskCard";
+import TaskList from "./Components/TaskList";
 
 // Helper functions
 const getLocalData = (key) => {
@@ -86,14 +88,14 @@ function Page() {
     );
   };
 
-  const archiveHandler = (id) => {
+  const archivedHandler = (id) => {
     const tasksToArchive = tasks.find((task) => task.id === id);
     setTasks((oldTask) => oldTask.filter((task) => task.id !== id));
     if (tasksToArchive)
       setArchiveTask((archivedTask) => [tasksToArchive, ...archivedTask]);
   };
 
-  const deleteHandler = (id) => {
+  const deletedHandler = (id) => {
     const taskToDelete = tasks.find((task) => task.id === id);
     setTasks((oldtask) => oldtask.filter((task) => task.id !== id));
     if (taskToDelete)
@@ -109,51 +111,24 @@ function Page() {
     );
   }
 
-  let renderTask =
-    tasks.length === 0 ? (
-      <p className="text-center mt-10 text-zinc-500">
-        No tasks yet! Add one above.
-      </p>
-    ) : (
-      <div className="flex flex-wrap gap-5 mt-10">
-        {tasks.map((task) => (
-          <div
-            key={task.id}
-            className={`border border-zinc-400 p-3 flex flex-col w-64 rounded-md shadow-sm transition-all duration-200 ${
-              task.isCompleted ? "bg-emerald-700" : "bg-[#10172a]"
-            }`}
-          >
-            <span className="text-lg font-bold">{task.title}</span>
-            <span className="text-sm font-light">{task.description}</span>
-            <div className="text-sm flex gap-5 mt-3">
-              <button
-                className="p-1 rounded-sm hover:scale-110 transition"
-                onClick={() => CompletedHandler(task.id)}
-              >
-                <Image src="/done.svg" height={18} width={18} alt="Completed" />
-              </button>
-              <button
-                className="p-1 rounded-sm hover:scale-110 transition"
-                onClick={() => archiveHandler(task.id)}
-              >
-                <Image
-                  src="/archive.svg"
-                  height={18}
-                  width={18}
-                  alt="Archive"
-                />
-              </button>
-              <button
-                className="p-1 rounded-sm hover:scale-110 transition"
-                onClick={() => deleteHandler(task.id)}
-              >
-                <Image src="/delete.svg" height={18} width={18} alt="Trash" />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+  // let renderTask =
+  //   tasks.length === 0 ? (
+  //     <p className="text-center mt-10 text-zinc-500">
+  //       No tasks yet! Add one above.
+  //     </p>
+  //   ) : (
+  //     <div className="flex flex-wrap gap-5 mt-10">
+  //       {tasks.map((task) => (
+  //         <TaskCard
+  //           key={task.id}
+  //           task={task}
+  //           completedHandler={CompletedHandler}
+  //           archivedHandler={archivedHandler}
+  //           deletedHandler={deletedHandler}
+  //         />
+  //       ))}
+  //     </div>
+  //   );
 
   return (
     <div className="flex h-screen w-screen">
@@ -172,7 +147,14 @@ function Page() {
           onDescChange={handleDescChange}
         />
 
-        <div>{renderTask}</div>
+        {/* <div>{renderTask}</div> */}
+
+        <TaskList
+          tasks={tasks}
+          completedHandler={CompletedHandler}
+          archivedHandler={archivedHandler}
+          deletedHandler={deletedHandler}
+        />
       </div>
     </div>
   );
