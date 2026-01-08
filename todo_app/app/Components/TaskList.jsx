@@ -9,7 +9,7 @@ const TaskList = ({ tasks, emptyMsg = "No task yet! Add one above." }) => {
   ) : (
     <div className="flex flex-wrap gap-5 mt-10">
       {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} />
+        <TaskCard key={task.id} title={task.title} desc={task.desc} />
       ))}
     </div>
   );
