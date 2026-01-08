@@ -16,13 +16,13 @@ function Page() {
       <div className="flex-grow p-5 overflow-y-auto">
         <Title title={"My ToDo List"} />
 
-        <TaskForm />
+        <TaskForm onSubmitTask={}/>
 
         {/* <TaskList
-          tasks={tasks}
-          completedHandler={CompletedHandler}
-          archivedHandler={archivedHandler}
-          deletedHandler={deletedHandler}
+          // tasks={tasks}
+          // completedHandler={CompletedHandler}
+          // archivedHandler={archivedHandler}
+          // deletedHandler={deletedHandler}
         /> */}
       </div>
     </div>

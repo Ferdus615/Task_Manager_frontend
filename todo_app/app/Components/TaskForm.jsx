@@ -6,6 +6,7 @@ const TaskForm = ({
   titelPlaceHolder = "Enter your Title here...",
   descPlaceHolder = "Enter your Desciption here",
   buttonText = "Add Task",
+  onSubmitTask,
 }) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -23,6 +24,12 @@ const TaskForm = ({
 
     console.log(`Title: ${title}`);
     console.log(`Desc: ${desc}`);
+
+    onSubmitTask({
+      id: Date.now(),
+      title,
+      desc,
+    });
 
     setTitle("");
     setDesc("");
