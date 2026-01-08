@@ -1,22 +1,23 @@
 "use client";
 import React from "react";
+import { useState } from "react";
 
 const TaskForm = ({
-  onSubmit,
-  title,
-  desc,
   titelPlaceHolder = "Enter your Title here...",
   descPlaceHolder = "Enter your Desciption here",
   onTitleChange,
   onDescChange,
   buttonText = "Add Task",
 }) => {
-  const handleSubmit = (e) => {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit(e);
   };
+
   return (
-    <form onSubmit={handleSubmit} className="flex justify-center gap-2">
+    <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
       <input
         type="text"
         value={title}
@@ -33,7 +34,7 @@ const TaskForm = ({
       />
       <button
         type="submit"
-        className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm"
+        className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
       >
         {buttonText}
       </button>
