@@ -5,15 +5,27 @@ import { useState } from "react";
 const TaskForm = ({
   titelPlaceHolder = "Enter your Title here...",
   descPlaceHolder = "Enter your Desciption here",
-  onTitleChange,
-  onDescChange,
   buttonText = "Add Task",
 }) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescChange = (e) => {
+    setDesc(e.target.value);
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    console.log(`Title: ${title}`);
+    console.log(`Desc: ${desc}`);
+
+    setTitle("");
+    setDesc("");
   };
 
   return (
@@ -21,14 +33,14 @@ const TaskForm = ({
       <input
         type="text"
         value={title}
-        onChange={onTitleChange}
+        onChange={handleTitleChange}
         placeholder={titelPlaceHolder}
         className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
       />
       <input
         type="text"
         value={desc}
-        onChange={onDescChange}
+        onChange={handleDescChange}
         placeholder={descPlaceHolder}
         className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
       />

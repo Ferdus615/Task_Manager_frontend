@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
@@ -17,15 +16,7 @@ function Page() {
       <div className="flex-grow p-5 overflow-y-auto">
         <Title title={"My ToDo List"} />
 
-        <TaskForm
-          // onSubmit={handleSubmit}
-          // title={title}
-          // desc={desc}
-          // onTitleChange={handleTitleChange}
-          // onDescChange={handleDescChange}
-        />
-
-        {/* <div>{renderTask}</div> */}
+        <TaskForm />
 
         {/* <TaskList
           tasks={tasks}
