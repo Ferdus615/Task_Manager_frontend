@@ -1,12 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
-import TaskCard from "./Components/TaskCard";
 import TaskList from "./Components/TaskList";
 
 function Page() {
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddTask = (task) => {
+    setTasks((prev) => [...prev, task]);
+  };
+
   return (
     <div className="flex h-screen w-screen">
       {/* Sidebar */}
@@ -16,14 +21,9 @@ function Page() {
       <div className="flex-grow p-5 overflow-y-auto">
         <Title title={"My ToDo List"} />
 
-        <TaskForm />
+        <TaskForm onSubmitTask={handleAddTask} />
 
-        {/* <TaskList
-          tasks={tasks}
-          completedHandler={CompletedHandler}
-          archivedHandler={archivedHandler}
-          deletedHandler={deletedHandler}
-        /> */}
+        <TaskList tasks={tasks} />
       </div>
     </div>
   );

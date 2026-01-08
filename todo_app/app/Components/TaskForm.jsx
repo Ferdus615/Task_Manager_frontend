@@ -6,6 +6,7 @@ const TaskForm = ({
   titelPlaceHolder = "Enter your Title here...",
   descPlaceHolder = "Enter your Desciption here",
   buttonText = "Add Task",
+  onSubmitTask,
 }) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -24,6 +25,12 @@ const TaskForm = ({
     console.log(`Title: ${title}`);
     console.log(`Desc: ${desc}`);
 
+    onSubmitTask({
+      id: Date.now(),
+      title,
+      desc,
+    });
+
     setTitle("");
     setDesc("");
   };
@@ -37,6 +44,7 @@ const TaskForm = ({
         placeholder={titelPlaceHolder}
         className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
       />
+
       <input
         type="text"
         value={desc}
@@ -44,6 +52,7 @@ const TaskForm = ({
         placeholder={descPlaceHolder}
         className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
       />
+      
       <button
         type="submit"
         className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
