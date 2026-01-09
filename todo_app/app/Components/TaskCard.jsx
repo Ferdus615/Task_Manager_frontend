@@ -3,10 +3,18 @@
 import Image from "next/image";
 import React from "react";
 
-const TaskCard = ({ title, desc }) => {
+const TaskCard = ({
+  id,
+  title,
+  desc,
+  isCompleted,
+  onCompleted,
+  onArchived,
+  onDeleted,
+}) => {
   return (
     <div
-      className={`flex flex-col border-2 border-blue-950 rounded-lg p-3 w-60 ${completed} ? bg-blue-500/20 : bg-blue/200`}
+      className={`flex flex-col border-2 border-blue-950 rounded-lg p-3 w-60 ${isCompleted} ? bg-blue-500/20 : bg-blue/200`}
     >
       <div className="flex flex-col max-h-60 overflow-hidden">
         <span className="text-lg font-medium mb-2">{title}</span>

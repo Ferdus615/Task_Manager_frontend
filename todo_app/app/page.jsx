@@ -9,7 +9,16 @@ function Page() {
   const [tasks, setTasks] = useState([]);
 
   const handleAddTask = (task) => {
-    setTasks((prev) => [...prev, task]);
+    setTasks((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        ...task,
+        isCompleted: false,
+        isArchived: false,
+        isDeleted: false,
+      },
+    ]);
   };
 
   return (
