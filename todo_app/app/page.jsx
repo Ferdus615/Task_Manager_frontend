@@ -1,10 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
-import TaskCard from "./Components/TaskCard";
 import TaskList from "./Components/TaskList";
 
 // Helper functions
@@ -32,6 +30,7 @@ function Page() {
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+
   const [tasks, setTasks] = useState([]);
   const [archiveTask, setArchiveTask] = useState([]);
   const [deleteTask, setDeleteTask] = useState([]);
@@ -111,25 +110,6 @@ function Page() {
     );
   }
 
-  // let renderTask =
-  //   tasks.length === 0 ? (
-  //     <p className="text-center mt-10 text-zinc-500">
-  //       No tasks yet! Add one above.
-  //     </p>
-  //   ) : (
-  //     <div className="flex flex-wrap gap-5 mt-10">
-  //       {tasks.map((task) => (
-  //         <TaskCard
-  //           key={task.id}
-  //           task={task}
-  //           completedHandler={CompletedHandler}
-  //           archivedHandler={archivedHandler}
-  //           deletedHandler={deletedHandler}
-  //         />
-  //       ))}
-  //     </div>
-  //   );
-
   return (
     <div className="flex h-screen w-screen">
       {/* Sidebar */}
@@ -146,8 +126,6 @@ function Page() {
           onTitleChange={handleTitleChange}
           onDescChange={handleDescChange}
         />
-
-        {/* <div>{renderTask}</div> */}
 
         <TaskList
           tasks={tasks}
