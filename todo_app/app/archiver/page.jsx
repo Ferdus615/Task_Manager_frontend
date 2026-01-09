@@ -3,6 +3,7 @@
 import React from "react";
 import Sidebar from "../Components/Sidebar";
 import Title from "../Components/Title";
+import TaskList from "../Components/TaskList";
 
 const page = () => {
   return (
@@ -10,7 +11,9 @@ const page = () => {
       <Sidebar />
 
       <div className="flex-grow p-5 overflow-y-auto">
-        <Title title={"Archiver page"} />
+        <Title title={"Archive page"} />
+
+        {/* <TaskList tasks={archiveTask} /> */}
       </div>
     </div>
   );
