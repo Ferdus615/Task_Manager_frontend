@@ -1,42 +1,22 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
-const TaskCard = ({
-  task,
-  completedHandler,
-  archivedHandler,
-  deletedHandler,
-}) => {
+const TaskCard = ({ title, desc }) => {
   return (
-    <div
-      className={`flex flex-col border-2 border-blue-950 rounded-lg p-3 w-60 ${
-        task.isCompleted ? " bg-blue-500/20" : "bg-blue-900/20"
-      }`}
-    >
-      <span className="text-lg font-medium mb-2">{task.title}</span>
-      <span className="text-sm font-light mb-4 text-zinc-400">
-        {task.description}
-      </span>
-      <div className="flex gap-3 mt-auto">
-        <button
-          className="pt-4 pr-3 cursor-pointer hover:scale-110 transition duration-200"
-          onClick={() => completedHandler(task.id)}
-        >
-          <Image src="/done.svg" height={18} width={18} alt="Completed" />
+    <div className="flex flex-col border-2 border-blue-950 rounded-lg p-3 w-60 max-h-50 overflow-hidden">
+      <span className="text-lg font-medium mb-2">{title}</span>
+      <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
+      <div className="flex pt-3 gap-7">
+        <button className="hover:cursor-pointer hover:scale-110 transition duration-200">
+          <Image src="/done.svg" width={20} height={20} alt="completed" />
         </button>
-        <button
-          className="pt-4 pr-3 cursor-pointer hover:scale-110 transition duration-200"
-          onClick={() => archivedHandler(task.id)}
-        >
-          <Image src="/archive.svg" height={18} width={18} alt="Archive" />
+        <button className="hover:cursor-pointer hover:scale-110 transition duration-200">
+          <Image src="/archive.svg" width={22} height={20} alt="completed" />
         </button>
-        <button
-          className="pt-4 pr-3 cursor-pointer hover:scale-110 transition duration-200"
-          onClick={() => deletedHandler(task.id)}
-        >
-          <Image src="/delete.svg" height={18} width={18} alt="Trash" />
+        <button className="hover:cursor-pointer hover:scale-110 transition duration-200">
+          <Image src="/trash.svg" width={18} height={20} alt="completed" />
         </button>
       </div>
     </div>
@@ -44,49 +24,3 @@ const TaskCard = ({
 };
 
 export default TaskCard;
-
-// let renderTask =
-//     tasks.length === 0 ? (
-//       <p className="text-center mt-10 text-zinc-500">
-//         No tasks yet! Add one above.
-//       </p>
-//     ) : (
-//       <div className="flex flex-wrap gap-5 mt-10">
-//         {tasks.map((task) => (
-//           <div
-//             key={task.id}
-//             className={`border border-zinc-400 p-3 flex flex-col w-64 rounded-md shadow-sm transition-all duration-200 ${
-//               task.isCompleted ? "bg-emerald-700" : "bg-[#10172a]"
-//             }`}
-//           >
-//             <span className="text-lg font-bold">{task.title}</span>
-//             <span className="text-sm font-light">{task.description}</span>
-//             <div className="text-sm flex gap-5 mt-3">
-//               <button
-//                 className="p-1 rounded-sm hover:scale-110 transition"
-//                 onClick={() => CompletedHandler(task.id)}
-//               >
-//                 <Image src="/done.svg" height={18} width={18} alt="Completed" />
-//               </button>
-//               <button
-//                 className="p-1 rounded-sm hover:scale-110 transition"
-//                 onClick={() => archiveHandler(task.id)}
-//               >
-//                 <Image
-//                   src="/archive.svg"
-//                   height={18}
-//                   width={18}
-//                   alt="Archive"
-//                 />
-//               </button>
-//               <button
-//                 className="p-1 rounded-sm hover:scale-110 transition"
-//                 onClick={() => deleteHandler(task.id)}
-//               >
-//                 <Image src="/delete.svg" height={18} width={18} alt="Trash" />
-//               </button>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     );
