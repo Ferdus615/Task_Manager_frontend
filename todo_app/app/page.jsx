@@ -1,64 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
 import TaskList from "./Components/TaskList";
+import { useTasks } from "./context/TaskContext";
 
 function Page() {
-  const [tasks, setTasks] = useState([]);
+  const {
+    tasks,
+    handleAddTask,
+    handleCompletedTasks,
+    handleArchivedTasks,
+    handleDeletedTasks,
+  } = useTasks();
 
-  // ====== load tasks ======
-  useEffect(() => {
-    const stroedTasks = localStorage.getItem("tasks");
-    if (stroedTasks) {
-      setTasks(JSON.parse(stroedTasks));
-    }
-  }, []);
-
-  // ====== save tasks ======
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  // ====== add tasks ======
-  const handleAddTask = (task) => {
-    setTasks((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        ...task,
-        isCompleted: false,
-        isArchived: false,
-        isDeleted: false,
-      },
-    ]);
-  };
-
-  //====== mark tasks status ======
-  const handleCompletedTasks = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
-      )
-    );
-  };
-
-  const handleArchivedTasks = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, isArchived: !task.isArchived } : task
-      )
-    );
-  };
-
-  const handleDeletedTasks = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, isDeleted: !task.isDeleted } : task
-      )
-    );
-  };
+  const activeTasks = tasks.filter(
+    (task) => !task.isArchived && !task.isDeleted
+  );
 
   return (
     <div className="flex h-screen w-screen">
@@ -72,7 +31,7 @@ function Page() {
         <TaskForm onSubmitTask={handleAddTask} />
 
         <TaskList
-          tasks={tasks.filter((task) => !task.isArchived && !task.isDeleted)}
+          tasks={activeTasks}
           onCompleted={handleCompletedTasks}
           onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}

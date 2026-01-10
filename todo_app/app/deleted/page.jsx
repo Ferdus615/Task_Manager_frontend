@@ -4,17 +4,12 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../Components/Sidebar";
 import Title from "../Components/Title";
 import TaskList from "../Components/TaskList";
+import { useTasks } from "../context/TaskContext";
 
 const page = () => {
-  const [deleted, setDeleted] = useState([]);
+  const { tasks, handleCompletedTasks, handleDeletedTasks } = useTasks();
 
-  useEffect(() => {
-    const deletdTasks = localStorage.getItem("deleted");
-    if (deletdTasks) {
-      setDeleted(JSON.parse(deletdTasks));
-    }
-  }, []);
-
+  const deletedTasks = tasks.filter((task) => task.isDeleted);
   return (
     <div className="flex h-screen w-screen">
       <Sidebar />
@@ -22,7 +17,11 @@ const page = () => {
       <div className="flex-grow p-5 overflow-y-auto">
         <Title title={"Trash Page"} />
 
-        <TaskList tasks={deleted} />
+        <TaskList
+          tasks={deletedTasks}
+          onCompleted={handleCompletedTasks}
+          onDeleted={handleDeletedTasks}
+        />
       </div>
     </div>
   );

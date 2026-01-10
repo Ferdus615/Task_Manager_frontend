@@ -4,37 +4,19 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../Components/Sidebar";
 import Title from "../Components/Title";
 import TaskList from "../Components/TaskList";
+import { useTasks } from "../context/TaskContext";
 
 const page = () => {
-  const [tasks, setTasks] = useState([]);
+  const {
+    tasks,
+    handleCompletedTasks,
+    handleArchivedTasks,
+    handleDeletedTasks,
+  } = useTasks();
 
-  useEffect(() => {
-    const stroedTasks = localStorage.getItem("tasks");
-    if (stroedTasks) {
-      setTasks(JSON.parse(stroedTasks));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  const handleArchivedTasks = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, isArchived: !task.isArchived } : task
-      )
-    );
-  };
-
-  const handleDeletedTasks = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, isDeleted: !task.isDeleted } : task
-      )
-    );
-  };
-
+  const archiveTasks = tasks.filter(
+    (task) => task.isArchived && !task.isDeleted
+  );
   return (
     <div className="flex h-screen w-screen">
       <Sidebar />
@@ -43,7 +25,8 @@ const page = () => {
         <Title title={"Archive page"} />
 
         <TaskList
-          tasks={tasks.filter((task) => task.isArchived && !task.isDeleted)}
+          tasks={archiveTasks}
+          onCompleted={handleCompletedTasks}
           onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}
         />
