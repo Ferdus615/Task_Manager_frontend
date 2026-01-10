@@ -9,7 +9,15 @@ const TaskList = ({ tasks, emptyMsg = "No task yet! Add one above." }) => {
   ) : (
     <div className="flex flex-wrap items-start gap-5 mt-10">
       {tasks.map((task) => (
-        <TaskCard key={task.id} title={task.title} desc={task.desc} />
+        <TaskCard
+          key={task.id}
+          title={task.title}
+          desc={task.desc}
+          isCompleted={task.isCompleted}
+          // onCompleted={handleCompletedTasks}
+          // onArchived={handleArchivedTasks}
+          // onDeleted={handleDeletedTasks}
+        />
       ))}
     </div>
   );
