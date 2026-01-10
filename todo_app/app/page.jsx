@@ -9,12 +9,13 @@ function Page() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const storedTasks = localStorage.getItem(JSON.parse("tasks"));
+    const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
     }
   }, []);
 
+  // ====== add tasks ======
   const handleAddTask = (task) => {
     setTasks((prev) => [
       ...prev,
@@ -28,8 +29,46 @@ function Page() {
     ]);
   };
 
+  //====== mark completed tasks ======
+  const handleCompletedTasks = (id) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, isCompleted: true } : task
+      )
+    );
+  };
+
+  //====== mark archived tasks ======
+  const handleArchivedTasks = (id) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, isArchived: true } : task
+      )
+    );
+  };
+
+  //====== mark deleted tasks ======
+  const handleDeletedTasks = (id) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, isDeleted: true } : task))
+    );
+  };
+
+  // ====== save tasks ======
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    const tasksArr = tasks.filter(
+      (task) => !task.isArchived && !task.isDeleted
+    );
+    const archivedArr = tasks.filter(
+      (task) => task.isArchived && !task.isDeleted
+    );
+    const deletedArr = tasks.filter(
+      (task) => task.isDeleted && !task.isArchived
+    );
+
+    localStorage.setItem("tasks", JSON.stringify(tasksArr));
+    localStorage.setItem("archived", JSON.stringify(archivedArr));
+    localStorage.setItem("deleted", JSON.stringify(deletedArr));
   }, [tasks]);
 
   return (
@@ -43,7 +82,12 @@ function Page() {
 
         <TaskForm onSubmitTask={handleAddTask} />
 
-        <TaskList tasks={tasks} />
+        <TaskList
+          tasks={tasks}
+          onCompleted={handleCompletedTasks}
+          onArchived={handleArchivedTasks}
+          onDeleted={handleDeletedTasks}
+        />
       </div>
     </div>
   );
