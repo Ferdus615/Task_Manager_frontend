@@ -8,12 +8,18 @@ import TaskList from "./Components/TaskList";
 function Page() {
   const [tasks, setTasks] = useState([]);
 
+  // ====== load tasks ======
   useEffect(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
+    const stroedTasks = localStorage.getItem("tasks");
+    if (stroedTasks) {
+      setTasks(JSON.parse(stroedTasks));
     }
   }, []);
+
+  // ====== save tasks ======
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   // ====== add tasks ======
   const handleAddTask = (task) => {
@@ -29,47 +35,30 @@ function Page() {
     ]);
   };
 
-  //====== mark completed tasks ======
+  //====== mark tasks status ======
   const handleCompletedTasks = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, isCompleted: true } : task
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
   };
 
-  //====== mark archived tasks ======
   const handleArchivedTasks = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, isArchived: true } : task
+        task.id === id ? { ...task, isArchived: !task.isArchived } : task
       )
     );
   };
 
-  //====== mark deleted tasks ======
   const handleDeletedTasks = (id) => {
     setTasks((prev) =>
-      prev.map((task) => (task.id === id ? { ...task, isDeleted: true } : task))
+      prev.map((task) =>
+        task.id === id ? { ...task, isDeleted: !task.isDeleted } : task
+      )
     );
   };
-
-  // ====== save tasks ======
-  useEffect(() => {
-    const tasksArr = tasks.filter(
-      (task) => !task.isArchived && !task.isDeleted
-    );
-    const archivedArr = tasks.filter(
-      (task) => task.isArchived && !task.isDeleted
-    );
-    const deletedArr = tasks.filter(
-      (task) => task.isDeleted && !task.isArchived
-    );
-
-    localStorage.setItem("tasks", JSON.stringify(tasksArr));
-    localStorage.setItem("archived", JSON.stringify(archivedArr));
-    localStorage.setItem("deleted", JSON.stringify(deletedArr));
-  }, [tasks]);
 
   return (
     <div className="flex h-screen w-screen">
@@ -83,10 +72,11 @@ function Page() {
         <TaskForm onSubmitTask={handleAddTask} />
 
         <TaskList
-          tasks={tasks}
+          tasks={tasks.filter((task) => !task.isArchived && !task.isDeleted)}
           onCompleted={handleCompletedTasks}
           onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}
+          emptyMsg={"No task yet! Please add task..."}
         />
       </div>
     </div>

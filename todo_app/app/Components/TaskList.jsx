@@ -3,13 +3,7 @@
 import React from "react";
 import TaskCard from "./TaskCard";
 
-const TaskList = ({
-  tasks,
-  onCompleted,
-  onArchived,
-  onDeleted,
-  emptyMsg = "No task yet! Please add task...",
-}) => {
+const TaskList = ({ tasks, onCompleted, onArchived, onDeleted, emptyMsg }) => {
   return tasks.length === 0 ? (
     <p className="font-light text-zinc-500 flex justify-center mt-10">
       {emptyMsg}

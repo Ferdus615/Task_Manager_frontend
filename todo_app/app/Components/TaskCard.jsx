@@ -14,10 +14,10 @@ const TaskCard = ({
 }) => {
   return (
     <div
-      className={`flex flex-col border-2 border-blue-950 rounded-lg p-3 w-60 ${
+      className={`flex flex-col border-2 rounded-lg p-3 w-60 ${
         isCompleted
-          ? "bg-blue-500/50 border-blue-500"
-          : "bg-blue-900/20 border-blue-500"
+          ? "bg-blue-500/20 border-blue-800"
+          : "bg-blue-900/20 border-blue-950"
       }`}
     >
       <div className="flex flex-col max-h-60 overflow-hidden">
