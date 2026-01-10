@@ -20,7 +20,7 @@ const Sidebar = () => {
       count: 0,
     },
     {
-      href: "/trash",
+      href: "/deleted",
       icon: "/trash.svg",
       label: "Trash",
       alt: "Trash",
@@ -54,9 +54,7 @@ const Sidebar = () => {
               key={item.href}
               href={item.href}
               className={`flex items-center gap-1 rounded-lg transition-all duration-200 ${
-                isActive
-                  ? "bg-blue-500/50"
-                  : "hover:bg-blue-800/30"
+                isActive ? "bg-blue-500/50" : "hover:bg-blue-800/30"
               }`}
             >
               <div className="p-2 rounded-md">

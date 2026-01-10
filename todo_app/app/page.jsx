@@ -31,14 +31,28 @@ function Page() {
 
   //====== mark completed tasks ======
   const handleCompletedTasks = (id) => {
-    setTasks((prev) => prev.map());
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, isCompleted: true } : task
+      )
+    );
   };
 
   //====== mark archived tasks ======
-  const handleArchivedTasks = (id) => {};
+  const handleArchivedTasks = (id) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, isArchived: true } : task
+      )
+    );
+  };
 
   //====== mark deleted tasks ======
-  const handleDeletedTasks = (id) => {};
+  const handleDeletedTasks = (id) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, isDeleted: true } : task))
+    );
+  };
 
   // ====== save tasks ======
   useEffect(() => {
@@ -68,7 +82,12 @@ function Page() {
 
         <TaskForm onSubmitTask={handleAddTask} />
 
-        <TaskList tasks={tasks} />
+        <TaskList
+          tasks={tasks}
+          onCompleted={handleCompletedTasks}
+          onArchived={handleArchivedTasks}
+          onDeleted={handleDeletedTasks}
+        />
       </div>
     </div>
   );
