@@ -31,30 +31,14 @@ function Page() {
 
   //====== mark completed tasks ======
   const handleCompletedTasks = (id) => {
-    setTasks((prev) => {
-      prev.map((task) => {
-        task.id === id ? { ...task, isCompleted: true } : task;
-      });
-    });
+    setTasks((prev) => prev.map());
   };
 
   //====== mark archived tasks ======
-  const handleArchivedTasks = (id) => {
-    setTasks((prev) => {
-      prev.map((task) => {
-        task.id === id ? { ...task, isArchived: true } : task;
-      });
-    });
-  };
+  const handleArchivedTasks = (id) => {};
 
   //====== mark deleted tasks ======
-  const handleDeletedTasks = (id) => {
-    setTasks((prev) => {
-      prev.map((task) => {
-        task.id === id ? { ...task, isDeleted: true } : task;
-      });
-    });
-  };
+  const handleDeletedTasks = (id) => {};
 
   // ====== save tasks ======
   useEffect(() => {
