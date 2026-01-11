@@ -26,7 +26,6 @@ const page = () => {
         <TaskList
           tasks={deletedTasks}
           onCompleted={handleCompletedTasks}
-          onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}
           onPermanentDelete={permanentDelete}
         />
