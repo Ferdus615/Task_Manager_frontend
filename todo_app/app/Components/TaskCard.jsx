@@ -11,6 +11,7 @@ const TaskCard = ({
   onCompleted,
   onArchived,
   onDeleted,
+  onPermanentDelete,
 }) => {
   return (
     <div
@@ -25,24 +26,50 @@ const TaskCard = ({
         <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
       </div>
       <div className="flex pt-2 gap-7">
-        <button
-          onClick={() => onCompleted(id)}
-          className="hover:cursor-pointer hover:scale-110 transition duration-200"
-        >
-          <Image src="/done.svg" width={20} height={20} alt="completed" />
-        </button>
-        <button
-          onClick={() => onArchived(id)}
-          className="hover:cursor-pointer hover:scale-110 transition duration-200"
-        >
-          <Image src="/archive.svg" width={22} height={20} alt="completed" />
-        </button>
-        <button
-          onClick={() => onDeleted(id)}
-          className="hover:cursor-pointer hover:scale-110 transition duration-200"
-        >
-          <Image src="/trash.svg" width={18} height={20} alt="completed" />
-        </button>
+        {onCompleted && (
+          <button
+            onClick={() => onCompleted(id)}
+            title="Complete task"
+            className="hover:cursor-pointer hover:scale-110 transition duration-200"
+          >
+            <Image src="/done.svg" width={20} height={20} alt="completed" />
+          </button>
+        )}
+
+        {onArchived && (
+          <button
+            onClick={() => onArchived(id)}
+            title="Archive task"
+            className="hover:cursor-pointer hover:scale-110 transition duration-200"
+          >
+            <Image src="/archive.svg" width={22} height={20} alt="Archive" />
+          </button>
+        )}
+
+        {onDeleted && (
+          <button
+            onClick={() => onDeleted(id)}
+            title="Delete task"
+            className="hover:cursor-pointer hover:scale-110 transition duration-200"
+          >
+            <Image src="/trash.svg" width={18} height={20} alt="Delete" />
+          </button>
+        )}
+
+        {onPermanentDelete && (
+          <button
+            onClick={() => onPermanentDelete(id)}
+            title="Delete permanently"
+            className="group hover:cursor-pointer hover:scale-110 transition duration-200"
+          >
+            <Image
+              src="/delete.svg"
+              width={18}
+              height={20}
+              alt="Permanent Delete"
+            ></Image>
+          </button>
+        )}
       </div>
     </div>
   );

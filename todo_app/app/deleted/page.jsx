@@ -12,6 +12,7 @@ const page = () => {
     handleCompletedTasks,
     handleArchivedTasks,
     handleDeletedTasks,
+    permanentDelete,
   } = useTasks();
 
   const deletedTasks = tasks.filter((task) => task.isDeleted);
@@ -25,8 +26,8 @@ const page = () => {
         <TaskList
           tasks={deletedTasks}
           onCompleted={handleCompletedTasks}
-          onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}
+          onPermanentDelete={permanentDelete}
         />
       </div>
     </div>

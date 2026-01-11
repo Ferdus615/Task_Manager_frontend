@@ -63,6 +63,12 @@ const TaskProvider = ({ children }) => {
     );
   };
 
+  const permanentDelete = (id) => {
+    if (confirm(`This can't be undone!`)) {
+      setTasks((prev) => prev.filter((task) => task.id !== id));
+    }
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -71,6 +77,7 @@ const TaskProvider = ({ children }) => {
         handleCompletedTasks,
         handleArchivedTasks,
         handleDeletedTasks,
+        permanentDelete,
       }}
     >
       {children}
