@@ -7,7 +7,12 @@ import TaskList from "../Components/TaskList";
 import { useTasks } from "../context/TaskContext";
 
 const page = () => {
-  const { tasks, handleCompletedTasks, handleDeletedTasks } = useTasks();
+  const {
+    tasks,
+    handleCompletedTasks,
+    handleArchivedTasks,
+    handleDeletedTasks,
+  } = useTasks();
 
   const deletedTasks = tasks.filter((task) => task.isDeleted);
   return (
@@ -20,6 +25,7 @@ const page = () => {
         <TaskList
           tasks={deletedTasks}
           onCompleted={handleCompletedTasks}
+          onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}
         />
       </div>

@@ -46,7 +46,9 @@ const TaskProvider = ({ children }) => {
   const handleArchivedTasks = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, isArchived: !task.isArchived } : task
+        task.id === id
+          ? { ...task, isArchived: !task.isArchived, isDeleted: false }
+          : task
       )
     );
   };
@@ -54,7 +56,9 @@ const TaskProvider = ({ children }) => {
   const handleDeletedTasks = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, isDeleted: !task.isDeleted } : task
+        task.id === id
+          ? { ...task, isDeleted: !task.isDeleted, isArchived: false }
+          : task
       )
     );
   };
