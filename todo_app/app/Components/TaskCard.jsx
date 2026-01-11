@@ -8,6 +8,8 @@ const TaskCard = ({
   title,
   desc,
   isCompleted,
+  isArchived,
+  isDeleted,
   onCompleted,
   onArchived,
   onDeleted,
@@ -29,7 +31,7 @@ const TaskCard = ({
         {onCompleted && (
           <button
             onClick={() => onCompleted(id)}
-            title="Complete task"
+            title={isCompleted ? "Incomplete task" : "Complete task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image src="/done.svg" width={20} height={20} alt="completed" />
@@ -39,7 +41,7 @@ const TaskCard = ({
         {onArchived && (
           <button
             onClick={() => onArchived(id)}
-            title="Archive task"
+            title={isArchived ? "Unarchive task" : "Archive task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image src="/archive.svg" width={22} height={20} alt="Archive" />
@@ -49,7 +51,7 @@ const TaskCard = ({
         {onDeleted && (
           <button
             onClick={() => onDeleted(id)}
-            title="Delete task"
+            title={isDeleted ? "Undo delete" : "Delete task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image src="/trash.svg" width={18} height={20} alt="Delete" />
