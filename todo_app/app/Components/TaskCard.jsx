@@ -54,7 +54,10 @@ const TaskCard = ({
         )}
 
         {onPermanentDelete && (
-          <button>
+          <button
+            onClick={() => onPermanentDelete(id)}
+            className="hover:cursor-pointer hover:scale-110 transition duration-200"
+          >
             <Image
               src="/delete.svg"
               width={18}
