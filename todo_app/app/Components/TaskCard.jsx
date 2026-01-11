@@ -29,6 +29,7 @@ const TaskCard = ({
         {onCompleted && (
           <button
             onClick={() => onCompleted(id)}
+            title="Complete task"
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image src="/done.svg" width={20} height={20} alt="completed" />
@@ -38,6 +39,7 @@ const TaskCard = ({
         {onArchived && (
           <button
             onClick={() => onArchived(id)}
+            title="Archive task"
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image src="/archive.svg" width={22} height={20} alt="Archive" />
@@ -47,6 +49,7 @@ const TaskCard = ({
         {onDeleted && (
           <button
             onClick={() => onDeleted(id)}
+            title="Delete task"
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image src="/trash.svg" width={18} height={20} alt="Delete" />
@@ -56,7 +59,8 @@ const TaskCard = ({
         {onPermanentDelete && (
           <button
             onClick={() => onPermanentDelete(id)}
-            className="hover:cursor-pointer hover:scale-110 transition duration-200"
+            title="Delete permanently"
+            className="group hover:cursor-pointer hover:scale-110 transition duration-200"
           >
             <Image
               src="/delete.svg"
