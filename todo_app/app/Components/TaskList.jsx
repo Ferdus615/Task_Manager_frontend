@@ -3,7 +3,14 @@
 import React from "react";
 import TaskCard from "./TaskCard";
 
-const TaskList = ({ tasks, onCompleted, onArchived, onDeleted, emptyMsg }) => {
+const TaskList = ({
+  tasks,
+  onCompleted,
+  onArchived,
+  onDeleted,
+  onPermanentDelete,
+  emptyMsg,
+}) => {
   return tasks.length === 0 ? (
     <p className="font-light text-zinc-500 flex justify-center mt-10">
       {emptyMsg}
@@ -20,6 +27,7 @@ const TaskList = ({ tasks, onCompleted, onArchived, onDeleted, emptyMsg }) => {
           onCompleted={onCompleted}
           onArchived={onArchived}
           onDeleted={onDeleted}
+          onPermanentDelete={onPermanentDelete}
         />
       ))}
     </div>

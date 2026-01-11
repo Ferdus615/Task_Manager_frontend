@@ -11,6 +11,7 @@ const TaskCard = ({
   onCompleted,
   onArchived,
   onDeleted,
+  Delete,
 }) => {
   return (
     <div
