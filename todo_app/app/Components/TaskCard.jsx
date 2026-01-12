@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const TaskCard = ({
   id,
@@ -15,16 +15,22 @@ const TaskCard = ({
   onDeleted,
   onPermanentDelete,
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div
-      className={`flex flex-col border-2 rounded-lg p-3 w-60 ${
+      className={`flex flex-col border-2 rounded-lg p-3 min-w-60 max-w-80 ${
         isCompleted
           ? "bg-blue-500/20 border-blue-800"
           : "bg-blue-900/20 border-blue-950"
       }`}
     >
-      <div className="flex flex-col max-h-60 overflow-hidden">
+      <div
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="flex flex-col max-h-60 overflow-hidden"
+      >
         <span className="text-lg font-medium mb-2">{title}</span>
+        <hr className="text-zinc-600 mb-2" />
         <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
       </div>
       <div className="flex pt-2 gap-7">

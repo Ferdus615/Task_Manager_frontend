@@ -64,7 +64,7 @@ const TaskProvider = ({ children }) => {
   };
 
   const permanentDelete = (id) => {
-    if (confirm(`This can't be undone!`)) {
+    if (confirm(`Are you sure? This can't be undone!`)) {
       setTasks((prev) => prev.filter((task) => task.id !== id));
     }
   };

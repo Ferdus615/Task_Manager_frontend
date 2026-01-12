@@ -29,7 +29,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="flex flex-col h-screen min-w-35 p-5 bg-[#101720]">
+    <aside className="flex flex-col rounded-r-2xl h-screen min-w-35 p-5 bg-[#101725]">
       {/* Logo */}
       <div className="flex flex-col items-center gap-2 mb-10">
         <div className="flex justify-center items-center">
@@ -75,11 +75,11 @@ const Sidebar = () => {
       <div className="mt-auto pt-6 border-t border-blue-800/50">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-blue-700/30 flex items-center justify-center">
-            <span className="font-bold text-blue-500">U</span>
+            <span className="font-bold text-blue-500">FK</span>
           </div>
           <div>
-            <p className="font-medium">User Name</p>
-            <p className="text-xs text-zinc-400">user@example.com</p>
+            <p className="font-medium">Ferdus Khan</p>
+            <p className="text-xs text-zinc-400">frkhan@gmail.com</p>
           </div>
         </div>
       </div>
