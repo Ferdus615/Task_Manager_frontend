@@ -20,7 +20,7 @@ const Sidebar = () => {
       count: 0,
     },
     {
-      href: "/trash",
+      href: "/deleted",
       icon: "/trash.svg",
       label: "Trash",
       alt: "Trash",
@@ -54,9 +54,7 @@ const Sidebar = () => {
               key={item.href}
               href={item.href}
               className={`flex items-center gap-1 rounded-lg transition-all duration-200 ${
-                isActive
-                  ? "bg-blue-500/50"
-                  : "hover:bg-blue-800/30"
+                isActive ? "bg-blue-500/50" : "hover:bg-blue-800/30"
               }`}
             >
               <div className="p-2 rounded-md">
@@ -88,38 +86,5 @@ const Sidebar = () => {
     </aside>
   );
 };
-
-// const Sidebar = () => {
-//   return (
-//     <aside className="flex flex-col h-screen min-w-35 gap-5 p-5 bg-[#101720]">
-//       <div className="flex justify-center items-center">
-//         <Image src="/logo.svg" height={50} width={40} alt="logo" />
-//       </div>
-//       <div className="flex flex-col gap-5">
-//         <Link
-//           href="/"
-//           className="text-sm pt-1 flex gap-2 items-center font-extralight cursor-pointer"
-//         >
-//           <Image src="/add.svg" height={18} width={18} alt="Add task" />
-//           <span>New task</span>
-//         </Link>
-//         <Link
-//           href="/archiver"
-//           className="text-sm pt-1 flex gap-2 items-center font-extralight cursor-pointer"
-//         >
-//           <Image src="/archiveBox.svg" height={18} width={18} alt="Archiver" />
-//           <span>Archiver</span>
-//         </Link>
-//         <Link
-//           href="/trash"
-//           className="text-sm pt-1 flex gap-2 items-center font-extralight cursor-pointer"
-//         >
-//           <Image src="/trash.svg" height={18} width={18} alt="Trash" />
-//           <span>Trash</span>
-//         </Link>
-//       </div>
-//     </aside>
-//   );
-// };
 
 export default Sidebar;

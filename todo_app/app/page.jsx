@@ -1,25 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "./Components/Sidebar";
 import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
 import TaskList from "./Components/TaskList";
+import { useTasks } from "./context/TaskContext";
 
 function Page() {
-  const [tasks, setTasks] = useState([]);
+  const {
+    tasks,
+    handleAddTask,
+    handleCompletedTasks,
+    handleArchivedTasks,
+    handleDeletedTasks,
+  } = useTasks();
 
-  const handleAddTask = (task) => {
-    setTasks((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        ...task,
-        isCompleted: false,
-        isArchived: false,
-        isDeleted: false,
-      },
-    ]);
-  };
+  const activeTasks = tasks.filter(
+    (task) => !task.isArchived && !task.isDeleted
+  );
 
   const handleCompleted = (id) => {};
 
@@ -38,7 +36,13 @@ function Page() {
 
         <TaskForm onSubmitTask={handleAddTask} />
 
-        <TaskList tasks={tasks} />
+        <TaskList
+          tasks={activeTasks}
+          onCompleted={handleCompletedTasks}
+          onArchived={handleArchivedTasks}
+          onDeleted={handleDeletedTasks}
+          emptyMsg={"No task yet! Please add task..."}
+        />
       </div>
     </div>
   );
