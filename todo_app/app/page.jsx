@@ -21,6 +21,12 @@ function Page() {
     ]);
   };
 
+  const handleCompleted = (id) => {};
+
+  const handleArchived = (id) => {};
+
+  const handleDeleted = (id) => {};
+
   return (
     <div className="flex h-screen w-screen">
       {/* Sidebar */}
