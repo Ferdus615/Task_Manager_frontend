@@ -1,12 +1,6 @@
 "use client";
 
-const {
-  createContext,
-  useState,
-  useEffect,
-  useContext,
-  use,
-} = require("react");
+const { createContext, useState, useEffect, useContext } = require("react");
 
 const TaskContext = createContext();
 
@@ -70,9 +64,7 @@ const TaskProvider = ({ children }) => {
   };
 
   const permanentDelete = (id) => {
-    setTasks((prev) => prev.filter((task) => task.id !== pendingId));
-    setShowModal(false);
-    setPendingId(null);
+    setTasks((prev) => prev.filter((task) => task.id !== id));
   };
 
   return (
