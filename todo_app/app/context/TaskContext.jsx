@@ -1,6 +1,12 @@
 "use client";
 
-const { createContext, useState, useEffect, useContext } = require("react");
+const {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  use,
+} = require("react");
 
 const TaskContext = createContext();
 
@@ -64,9 +70,9 @@ const TaskProvider = ({ children }) => {
   };
 
   const permanentDelete = (id) => {
-    if (confirm(`Are you sure? This can't be undone!`)) {
-      setTasks((prev) => prev.filter((task) => task.id !== id));
-    }
+    setTasks((prev) => prev.filter((task) => task.id !== pendingId));
+    setShowModal(false);
+    setPendingId(null);
   };
 
   return (

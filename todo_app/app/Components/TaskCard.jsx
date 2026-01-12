@@ -15,7 +15,7 @@ const TaskCard = ({
   onDeleted,
   onPermanentDelete,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   return (
     <div
@@ -25,10 +25,7 @@ const TaskCard = ({
           : "bg-blue-900/20 border-blue-950"
       }`}
     >
-      <div
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="flex flex-col max-h-60 overflow-hidden"
-      >
+      <div className="flex flex-col max-h-60 overflow-hidden">
         <span className="text-lg font-medium mb-2">{title}</span>
         <hr className="text-zinc-600 mb-2" />
         <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
@@ -64,9 +61,9 @@ const TaskCard = ({
           </button>
         )}
 
-        {onPermanentDelete && (
+        {onPermanentDelete && !confirmDelete && (
           <button
-            onClick={() => onPermanentDelete(id)}
+            onClick={() => setConfirmDelete(true)}
             title="Delete permanently"
             className="group hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -77,6 +74,24 @@ const TaskCard = ({
               alt="Permanent Delete"
             ></Image>
           </button>
+        )}
+
+        {confirmDelete && (
+          <div>
+            <span>Are you sure? This can't be undone!</span>
+            <div>
+              <button onClick={() => setConfirmDelete(false)}>Cancle</button>
+
+              <button
+                onClick={() => {
+                  onPermanentDelete(id);
+                  setConfirmDelete(false);
+                }}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>
