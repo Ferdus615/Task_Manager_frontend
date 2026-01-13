@@ -78,7 +78,7 @@ const TaskCard = ({
 
         {confirmDelete && (
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
-            <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit border p-6 rounded-md bg-gray-900 z-50">
+            <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit border border-blue-900 p-6 rounded-md bg-blue-950/30 z-50">
               <div>
                 <span className="font-normal text-sm">
                   Are you sure? You want to delete this!
@@ -87,7 +87,7 @@ const TaskCard = ({
               <div className="flex gap-5 mt-3">
                 <button
                   onClick={() => setConfirmDelete(false)}
-                  className="border rounded-sm px-3 py-1 text-sm font-light bg-blue-700 text-zinc-300 border-blue-900 hover:cursor-pointer"
+                  className="border rounded-sm px-3 py-1 text-sm font-light bg-blue-950 text-zinc-300 border-blue-900 hover:cursor-pointer"
                 >
                   Cancle
                 </button>
@@ -97,7 +97,7 @@ const TaskCard = ({
                     onPermanentDelete(id);
                     setConfirmDelete(false);
                   }}
-                  className="border rounded-sm px-3 py-1 text-sm font-light bg-blue-700 text-zinc-300 border-blue-900 hover:cursor-pointer"
+                  className="border rounded-sm px-3 py-1 text-sm font-light bg-blue-950 text-zinc-300 border-blue-900 hover:cursor-pointer"
                 >
                   Confirm
                 </button>
