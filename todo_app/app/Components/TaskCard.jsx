@@ -28,9 +28,8 @@ const TaskCard = ({
     <div
       onClick={() => setShowDetails(true)}
       className={`flex flex-col border-2 rounded-lg p-3 min-w-60 max-w-80 
-        ${isCompleted ? "border-green-800" : "bg-[#111827] border-[#2D3748]"} 
-        ${isDeleted ? "border-red-800" : "bg-[#111827] border-[#2D3748]"}
-        ${isArchived ? "border-blue-800" : "bg-[#111827] border-[#2D3748]"}`}
+        ${isCompleted ? "border-green-800" : "bg-[#1e1e20] border-[#888888]"} 
+        ${isDeleted ? "border-red-800" : "bg-[#1e1e20] border-[#888888]"}`}
     >
       <div className="flex flex-col max-h-60 overflow-hidden">
         <span className="text-lg font-medium mb-2">{title}</span>

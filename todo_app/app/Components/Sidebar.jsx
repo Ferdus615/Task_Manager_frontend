@@ -29,7 +29,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="flex flex-col rounded-r-2xl h-screen min-w-35 p-5 bg-[#101725]">
+    <aside className="flex flex-col rounded-r-2xl h-screen min-w-35 p-5 bg-[#1e1f20] shadow-2xl">
       {/* Logo */}
       <div className="flex flex-col items-center gap-2 mb-10">
         <div className="flex justify-center items-center">
