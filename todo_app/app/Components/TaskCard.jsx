@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 
 const TaskCard = ({
   id,
@@ -16,6 +16,7 @@ const TaskCard = ({
   onPermanentDelete,
 }) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div
