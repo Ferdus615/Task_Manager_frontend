@@ -38,7 +38,7 @@ const TaskCard = ({
         <hr className="text-zinc-800 mb-2" />
         <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
       </div>
-      <div className="flex pt-2 gap-7">
+      <div className="flex pt-3 gap-7">
         {onCompleted && (
           <button
             onClick={(e) => handleAction(e, onCompleted)}
@@ -120,6 +120,7 @@ const TaskCard = ({
           </div>
         )}
       </div>
+
       <div>
         {showDetails && (
           <TaskDetailsModal
