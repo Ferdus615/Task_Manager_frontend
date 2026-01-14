@@ -32,7 +32,7 @@ const TaskCard = ({
         ${isDeleted ? "border-[#9c2121]" : "border-[#3f3f4b]/0"}`}
     >
       <div className="flex flex-col max-h-60 overflow-hidden">
-        <span className="text-lg font-medium mb-2">{title}</span>
+        <span className="text-lg font-medium mb-2 text-[#fef9db]">{title}</span>
         <hr className="text-[#fef9db]/20 mb-2" />
         <span className="text-sm font-light mb-3 text-zinc-400 line-clamp-7">
           {desc}
@@ -92,7 +92,10 @@ const TaskCard = ({
             onClick={(e) => e.stopPropagation()}
             className="fixed inset-0 bg-[black/60] backdrop-blur-sm z-50 flex items-center justify-center"
           >
-            <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit p-6 rounded-lg bg-[#9c2121] z-50">
+            <div
+              className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit p-6
+             rounded-lg bg-[#9c2121] z-50"
+            >
               <div>
                 <span className="font-normal text-sm">
                   Are you sure? You want to delete this!

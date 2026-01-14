@@ -5,6 +5,7 @@ import Title from "./Components/Title";
 import TaskForm from "./Components/TaskForm";
 import TaskList from "./Components/TaskList";
 import { useTasks } from "./context/TaskContext";
+import Tiptap from "./Components/Tiptap";
 
 function Page() {
   const {
