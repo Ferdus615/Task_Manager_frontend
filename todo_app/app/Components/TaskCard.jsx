@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { use, useState } from "react";
+import TaskDetailsModal from "./TaskDetailsModal";
 
 const TaskCard = ({
   id,
@@ -15,9 +16,18 @@ const TaskCard = ({
   onDeleted,
   onPermanentDelete,
 }) => {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleAction = (e, callback) => {
+    e.stopPropagation();
+    callback(id);
+  };
+
   return (
     <div
-      className={`flex flex-col border-2 rounded-lg p-3 w-60 ${
+      onClick={() => setShowDetails(true)}
+      className={`flex flex-col border-2 rounded-lg p-3 min-w-60 max-w-80 ${
         isCompleted
           ? "bg-blue-500/20 border-blue-800"
           : "bg-blue-900/20 border-blue-950"
@@ -25,12 +35,15 @@ const TaskCard = ({
     >
       <div className="flex flex-col max-h-60 overflow-hidden">
         <span className="text-lg font-medium mb-2">{title}</span>
-        <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
+        <hr className="text-zinc-800 mb-2" />
+        <span className="text-sm font-light mb-3 text-zinc-400 line-clamp-7">
+          {desc}
+        </span>
       </div>
       <div className="flex pt-2 gap-7">
         {onCompleted && (
           <button
-            onClick={() => onCompleted(id)}
+            onClick={(e) => handleAction(e, onCompleted)}
             title={isCompleted ? "Incomplete task" : "Complete task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -40,7 +53,7 @@ const TaskCard = ({
 
         {onArchived && (
           <button
-            onClick={() => onArchived(id)}
+            onClick={(e) => handleAction(e, onArchived)}
             title={isArchived ? "Unarchive task" : "Archive task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -50,7 +63,7 @@ const TaskCard = ({
 
         {onDeleted && (
           <button
-            onClick={() => onDeleted(id)}
+            onClick={(e) => handleAction(e, onDeleted)}
             title={isDeleted ? "Undo delete" : "Delete task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -58,9 +71,12 @@ const TaskCard = ({
           </button>
         )}
 
-        {onPermanentDelete && (
+        {onPermanentDelete && !confirmDelete && (
           <button
-            onClick={() => onPermanentDelete(id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setConfirmDelete(true);
+            }}
             title="Delete permanently"
             className="group hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -71,6 +87,49 @@ const TaskCard = ({
               alt="Permanent Delete"
             ></Image>
           </button>
+        )}
+
+        {confirmDelete && (
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center"
+          >
+            <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit border border-blue-900 p-6 rounded-md bg-blue-950/30 z-50">
+              <div>
+                <span className="font-normal text-sm">
+                  Are you sure? You want to delete this!
+                </span>
+              </div>
+              <div className="flex gap-5 mt-3">
+                <button
+                  onClick={() => setConfirmDelete(false)}
+                  className="border rounded-sm px-3 py-1 text-sm font-light bg-blue-950 text-zinc-300 border-blue-900 hover:cursor-pointer"
+                >
+                  Cancle
+                </button>
+
+                <button
+                  onClick={() => {
+                    onPermanentDelete(id);
+                    setConfirmDelete(false);
+                  }}
+                  className="border rounded-sm px-3 py-1 text-sm font-light bg-blue-950 text-zinc-300 border-blue-900 hover:cursor-pointer"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div>
+        {showDetails && (
+          <TaskDetailsModal
+            title={title}
+            desc={desc}
+            onClose={(e) => setShowDetails(false)}
+          />
         )}
       </div>
     </div>
