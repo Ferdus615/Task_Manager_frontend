@@ -36,9 +36,11 @@ const TaskCard = ({
       <div className="flex flex-col max-h-60 overflow-hidden">
         <span className="text-lg font-medium mb-2">{title}</span>
         <hr className="text-zinc-800 mb-2" />
-        <span className="text-sm font-light mb-4 text-zinc-400">{desc}</span>
+        <span className="text-sm font-light mb-3 text-zinc-400 line-clamp-7">
+          {desc}
+        </span>
       </div>
-      <div className="flex pt-3 gap-7">
+      <div className="flex pt-2 gap-7">
         {onCompleted && (
           <button
             onClick={(e) => handleAction(e, onCompleted)}
