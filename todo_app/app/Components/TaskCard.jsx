@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { use, useState } from "react";
+import TaskDetailsModal from "./TaskDetailsModal";
 
 const TaskCard = ({
   id,
@@ -20,6 +21,7 @@ const TaskCard = ({
 
   return (
     <div
+      onClick={() => setShowDetails(true)}
       className={`flex flex-col border-2 rounded-lg p-3 min-w-60 max-w-80 ${
         isCompleted
           ? "bg-blue-500/20 border-blue-800"
@@ -105,6 +107,15 @@ const TaskCard = ({
               </div>
             </div>
           </div>
+        )}
+      </div>
+      <div>
+        {showDetails && (
+          <TaskDetailsModal
+            title={title}
+            desc={desc}
+            onClose={() => showDetails(false)}
+          />
         )}
       </div>
     </div>
