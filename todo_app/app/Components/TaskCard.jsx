@@ -92,7 +92,7 @@ const TaskCard = ({
             onClick={(e) => e.stopPropagation()}
             className="fixed inset-0 bg-[black/60] backdrop-blur-sm z-50 flex items-center justify-center"
           >
-            <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit border border-red-900 p-6 rounded-md bg-zinc-800 z-50">
+            <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit p-6 rounded-lg bg-[#9c2121] z-50">
               <div>
                 <span className="font-normal text-sm">
                   Are you sure? You want to delete this!
@@ -101,7 +101,7 @@ const TaskCard = ({
               <div className="flex gap-5 mt-3">
                 <button
                   onClick={() => setConfirmDelete(false)}
-                  className="border-2 rounded-sm px-3 py-1 text-sm font-bold text-zinc-300 border-green-600 hover:cursor-pointer"
+                  className="rounded-sm px-3 py-1 text-sm font-bold text-zinc-300 bg-[#22946e] hover:cursor-pointer"
                 >
                   Cancle
                 </button>
@@ -111,7 +111,7 @@ const TaskCard = ({
                     onPermanentDelete(id);
                     setConfirmDelete(false);
                   }}
-                  className="border-2 rounded-sm px-3 py-1 text-sm font-bold text-zinc-300 border-red-600 hover:cursor-pointer"
+                  className="rounded-sm px-3 py-1 text-sm font-bold text-zinc-300 bg-[#d94a4a] hover:cursor-pointer"
                 >
                   Confirm
                 </button>

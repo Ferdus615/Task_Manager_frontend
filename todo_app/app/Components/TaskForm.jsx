@@ -38,30 +38,32 @@ const TaskForm = ({
 
   return (
     <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
-      <input
-        type="text"
-        value={title}
-        onChange={handleTitleChange}
-        placeholder={titelPlaceHolder}
-        className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
-      />
-
-      <input
-        type="text"
-        value={desc}
-        onChange={handleDescChange}
-        placeholder={descPlaceHolder}
-        className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
-      />
-
-      <button
-        type="submit"
-        className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
-      >
-        {buttonText}
-      </button>
+      <div className="borber-2 p-2 w-[30%] h-[10%] border-[#575762] rounded-2xl bg-[#3f3f4b]"></div>
     </form>
   );
 };
 
 export default TaskForm;
+
+// <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
+//   <textarea
+//     value={title}
+//     onChange={handleTitleChange}
+//     placeholder={titelPlaceHolder}
+//     className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
+//   ></textarea>
+
+//   <textarea
+//     value={desc}
+//     onChange={handleDescChange}
+//     placeholder={descPlaceHolder}
+//     className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
+//   ></textarea>
+
+//   <button
+//     type="submit"
+//     className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
+//   >
+//     {buttonText}
+//   </button>
+// </form>
