@@ -4,7 +4,7 @@ import React from "react";
 
 const TaskDetailsModal = ({ title, desc, onClose }) => {
   return (
-    <div>
+    <div onClick={(e) => e.stopPropagation()}>
       <div>
         <button onClick={onClose}>X</button>
         <h2>{title}</h2>

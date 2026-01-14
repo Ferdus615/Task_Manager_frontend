@@ -19,6 +19,11 @@ const TaskCard = ({
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
 
+  const handleAction = (e, callback) => {
+    e.stopPropagation();
+    callback(id);
+  };
+
   return (
     <div
       onClick={() => setShowDetails(true)}
@@ -36,7 +41,7 @@ const TaskCard = ({
       <div className="flex pt-2 gap-7">
         {onCompleted && (
           <button
-            onClick={() => onCompleted(id)}
+            onClick={(e) => handleAction(e, onCompleted)}
             title={isCompleted ? "Incomplete task" : "Complete task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -46,7 +51,7 @@ const TaskCard = ({
 
         {onArchived && (
           <button
-            onClick={() => onArchived(id)}
+            onClick={(e) => handleAction(e, onArchived)}
             title={isArchived ? "Unarchive task" : "Archive task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -56,7 +61,7 @@ const TaskCard = ({
 
         {onDeleted && (
           <button
-            onClick={() => onDeleted(id)}
+            onClick={(e) => handleAction(e, onDeleted)}
             title={isDeleted ? "Undo delete" : "Delete task"}
             className="hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -66,7 +71,10 @@ const TaskCard = ({
 
         {onPermanentDelete && !confirmDelete && (
           <button
-            onClick={() => setConfirmDelete(true)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setConfirmDelete(true);
+            }}
             title="Delete permanently"
             className="group hover:cursor-pointer hover:scale-110 transition duration-200"
           >
@@ -80,7 +88,10 @@ const TaskCard = ({
         )}
 
         {confirmDelete && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center"
+          >
             <div className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit border border-blue-900 p-6 rounded-md bg-blue-950/30 z-50">
               <div>
                 <span className="font-normal text-sm">
@@ -114,7 +125,7 @@ const TaskCard = ({
           <TaskDetailsModal
             title={title}
             desc={desc}
-            onClose={() => showDetails(false)}
+            onClose={(e) => setShowDetails(false)}
           />
         )}
       </div>
