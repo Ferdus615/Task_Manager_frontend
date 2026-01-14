@@ -7,12 +7,9 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className="absolute inset-0 m-auto w-120 h-150 overflow-auto p-5 rounded-lg bg-gray-950 scrollbar-none scrollbar-none 
-        [&::-webkit-scrollbar]:display-none 
-        [-ms-overflow-style:none] 
-        [scrollbar-width:none]"
+      className="absolute inset-0 m-auto w-120 h-150"
     >
-      <div className="fixed flex justify-between pb-5">
+      <div className="fixed w-120 flex justify-between p-5 bg-gray-950 rounded-lg">
         <h2 className="text-xl font-bold">{title}</h2>
         <button
           onClick={onClose}
@@ -21,7 +18,14 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
           <Image src="/crossMark.svg" width={10} height={10} alt="Close" />
         </button>
       </div>
-      <p className="text-sm font-light">{desc}</p>
+      <div
+        className="p-5 mt-12 h-140 overflow-auto rounded-lg bg-gray-950 scrollbar-none scrollbar-none 
+        [&::-webkit-scrollbar]:display-none 
+        [-ms-overflow-style:none] 
+        [scrollbar-width:none]"
+      >
+        <p className="text-sm font-light">{desc}</p>
+      </div>
     </div>
   );
 };
