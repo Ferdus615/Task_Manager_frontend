@@ -3,8 +3,8 @@ import React from "react";
 import { useState } from "react";
 
 const TaskForm = ({
-  titelPlaceHolder = "Enter your Title here...",
-  descPlaceHolder = "Enter your Desciption here",
+  titelPlaceHolder = "Title",
+  descPlaceHolder = "Enter Your Task...",
   buttonText = "Add Task",
   onSubmitTask,
 }) => {
@@ -38,7 +38,35 @@ const TaskForm = ({
 
   return (
     <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
-      <div className="borber-2 p-2 w-[30%] h-[10%] border-[#575762] rounded-2xl bg-[#3f3f4b]"></div>
+      <div
+        className="p-3 w-[30%] border-[#575762] rounded-md bg-[#3f3f4b]
+      flex flex-col gap-3"
+      >
+        <input
+          type="text"
+          value={title}
+          onChange={handleTitleChange}
+          placeholder={titelPlaceHolder}
+          className="outline-none font-bold text-2xl"
+        />
+
+        <hr className="text-zinc-600" />
+
+        <input
+          type="text"
+          value={desc}
+          onChange={handleDescChange}
+          placeholder={descPlaceHolder}
+          className="outline-none font-normal text-lg"
+        />
+
+        <button
+          type="submit"
+          className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
+        >
+          {buttonText}
+        </button>
+      </div>
     </form>
   );
 };
