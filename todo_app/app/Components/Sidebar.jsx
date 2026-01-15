@@ -29,7 +29,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="flex flex-col rounded-r-2xl h-screen min-w-35 p-5 bg-[#1e1f20] shadow-2xl">
+    <aside className="flex flex-col h-screen min-w-35 p-5 bg-[#272835] shadow-2xl">
       {/* Logo */}
       <div className="flex flex-col items-center gap-2 mb-10">
         <div className="flex justify-center items-center">
@@ -41,11 +41,11 @@ const Sidebar = () => {
             className=""
           />
         </div>
-        <span className="text-md font-light">ToDoList</span>
+        <span className="text-md font-light text-[#fef9db]">ToDoList</span>
       </div>
 
       {/* Navigation */}
-      <nav className="flex flex-col gap-3">
+      <nav className="flex flex-col gap-3 text-[#fef9db]">
         {navItem.map((item) => {
           const isActive = pathname === item.href;
 
@@ -54,7 +54,7 @@ const Sidebar = () => {
               key={item.href}
               href={item.href}
               className={`flex items-center gap-1 rounded-lg transition-all duration-200 ${
-                isActive ? "bg-blue-500/50" : "hover:bg-blue-800/30"
+                isActive ? "bg-[#504e56]" : "hover:bg-[#7e7d83]/20"
               }`}
             >
               <div className="p-2 rounded-md">
@@ -72,7 +72,7 @@ const Sidebar = () => {
       </nav>
 
       {/* User Information */}
-      <div className="mt-auto pt-6 border-t border-blue-800/50">
+      <div className="mt-auto pt-6 border-t border-[#fcf6ca]/30">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-blue-700/30 flex items-center justify-center">
             <span className="font-bold text-blue-500">FK</span>

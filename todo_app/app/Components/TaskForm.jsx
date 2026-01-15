@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import Tiptap from "./Tiptap";
 
 const TaskForm = ({
-  titelPlaceHolder = "Enter your Title here...",
-  descPlaceHolder = "Enter your Desciption here",
+  titelPlaceHolder = "Title",
+  descPlaceHolder = "Enter Your Task...",
   buttonText = "Add Task",
   onSubmitTask,
 }) => {
@@ -38,30 +39,63 @@ const TaskForm = ({
 
   return (
     <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
-      <input
-        type="text"
-        value={title}
-        onChange={handleTitleChange}
-        placeholder={titelPlaceHolder}
-        className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
-      />
-
-      <input
-        type="text"
-        value={desc}
-        onChange={handleDescChange}
-        placeholder={descPlaceHolder}
-        className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
-      />
-
-      <button
-        type="submit"
-        className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
+      <div
+        className="p-3 w-[30%] border-[#575762] rounded-md bg-[#3f3f4b]
+      flex flex-col gap-3"
       >
-        {buttonText}
-      </button>
+        {/* <input
+          type="text"
+          value={title}
+          onChange={handleTitleChange}
+          placeholder={titelPlaceHolder}
+          className="outline-none font-bold text-2xl"
+        />
+
+        <hr className="text-zinc-600" />
+
+        <input
+          type="text"
+          value={desc}
+          onChange={handleDescChange}
+          placeholder={descPlaceHolder}
+          className="outline-none font-normal text-lg"
+        /> */}
+
+        <Tiptap />
+
+        <button
+          type="submit"
+          className="text-[#fef9db] bg-[#121220] hover:bg-[#272835] rounded-sm px-3 py-1
+           text-sm hover:cursor-pointer"
+        >
+          {buttonText}
+        </button>
+      </div>
     </form>
   );
 };
 
 export default TaskForm;
+
+// <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
+//   <textarea
+//     value={title}
+//     onChange={handleTitleChange}
+//     placeholder={titelPlaceHolder}
+//     className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
+//   ></textarea>
+
+//   <textarea
+//     value={desc}
+//     onChange={handleDescChange}
+//     placeholder={descPlaceHolder}
+//     className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
+//   ></textarea>
+
+//   <button
+//     type="submit"
+//     className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
+//   >
+//     {buttonText}
+//   </button>
+// </form>
