@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import Tiptap from "./Tiptap";
 
 const TaskForm = ({
   titelPlaceHolder = "Title",
@@ -43,7 +42,7 @@ const TaskForm = ({
         className="p-3 w-[30%] border-[#575762] rounded-md bg-[#3f3f4b]
       flex flex-col gap-3"
       >
-        {/* <input
+        <input
           type="text"
           value={title}
           onChange={handleTitleChange}
@@ -59,9 +58,7 @@ const TaskForm = ({
           onChange={handleDescChange}
           placeholder={descPlaceHolder}
           className="outline-none font-normal text-lg"
-        /> */}
-
-        <Tiptap />
+        />
 
         <button
           type="submit"
@@ -76,26 +73,3 @@ const TaskForm = ({
 };
 
 export default TaskForm;
-
-// <form onSubmit={handleFormSubmit} className="flex justify-center gap-2">
-//   <textarea
-//     value={title}
-//     onChange={handleTitleChange}
-//     placeholder={titelPlaceHolder}
-//     className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
-//   ></textarea>
-
-//   <textarea
-//     value={desc}
-//     onChange={handleDescChange}
-//     placeholder={descPlaceHolder}
-//     className="border border-blue-500/30 rounded-sm w-60 p-1 text-sm bg-transparent"
-//   ></textarea>
-
-//   <button
-//     type="submit"
-//     className="bg-blue-900 hover:bg-blue-900/50 rounded-sm px-3 py-1 text-sm hover:cursor-pointer"
-//   >
-//     {buttonText}
-//   </button>
-// </form>
