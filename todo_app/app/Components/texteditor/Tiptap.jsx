@@ -37,7 +37,10 @@ const Tiptap = () => {
   if (!editor) return null;
 
   return (
-    <div className="min-w-[30%] max-w-[50%] mx-auto p-5 rounded-lg text-[#fef9db] bg-[#272835]">
+    <div
+      className="min-w-[30%] max-w-[50%] mx-auto p-5 rounded-lg text-[#fef9db] bg-[#272835] 
+    [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:text-xl [&_h3]:font-bold"
+    >
       <Menubar editor={editor} />
       <EditorContent editor={editor} />
     </div>
