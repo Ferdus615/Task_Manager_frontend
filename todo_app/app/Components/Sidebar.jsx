@@ -29,7 +29,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="flex flex-col h-screen min-w-35 p-5 bg-[#272835] shadow-2xl">
+    <aside className="flex flex-col h-screen min-w-35 p-5 bg-[#272835] shadow-2xl text-[#fef9db]">
       {/* Logo */}
       <div className="flex flex-col items-center gap-2 mb-10">
         <div className="flex justify-center items-center">
@@ -41,11 +41,11 @@ const Sidebar = () => {
             className=""
           />
         </div>
-        <span className="text-md font-light text-[#fef9db]">ToDoList</span>
+        <span className="text-md font-light">ToDoList</span>
       </div>
 
       {/* Navigation */}
-      <nav className="flex flex-col gap-3 text-[#fef9db]">
+      <nav className="flex flex-col gap-3">
         {navItem.map((item) => {
           const isActive = pathname === item.href;
 
@@ -72,7 +72,7 @@ const Sidebar = () => {
       </nav>
 
       {/* User Information */}
-      <div className="mt-auto pt-6 border-t border-[#fcf6ca]/30">
+      <div className="mt-auto pt-6 border-t border-[#fcf6ca]/20">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-blue-700/30 flex items-center justify-center">
             <span className="font-bold text-blue-500">FK</span>
