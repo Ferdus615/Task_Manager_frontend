@@ -32,6 +32,10 @@ const Tiptap = () => {
     onTransaction: () => {
       setUpdate((prev) => prev + 1);
     },
+    onUpdate: ({ editor }) => {
+      const json = editor.getJSON();
+      localStorage.setItem("tiptap-content", JSON.stringify(json));
+    },
   });
 
   if (!editor) return null;
