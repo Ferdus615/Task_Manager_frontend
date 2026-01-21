@@ -11,10 +11,10 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="flex flex-col absolute inset-0 m-auto w-fit h-fit max-w-[50%] max-h-[80%]
-         border-2 border-[#26242d] rounded-lg bg-[#121220] overflow-hidden"
+        className="flex flex-col absolute inset-0 m-auto w-fit h-fit max-w-[40%] max-h-[90%]
+         border-2 border-[#26242d] rounded-lg bg-[#121220] text-zinc-300 overflow-hidden"
       >
-        <div className="flex justify-between p-5 border-b border-[#272835]">
+        <div className="flex gap-10 justify-between p-5 border-b border-[#272835]">
           <h2 className="text-xl font-bold">{title}</h2>
           <div>
             <button
