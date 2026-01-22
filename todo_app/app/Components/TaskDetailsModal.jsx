@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
+import TaskContent from "./texteditor/TaskContent";
+import { EditorContent } from "@tiptap/react";
 
 const TaskDetailsModal = ({ title, desc, onClose }) => {
   return (
@@ -31,7 +33,9 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
         [-ms-overflow-style:none] 
         [scrollbar-width:none]"
         >
-          <p className="text-sm font-light">{desc}</p>
+          {/* <EditorContent content={desc} /> */}
+          <TaskContent content={desc} />
+          {/* <p className="text-sm font-light">{desc}</p> */}
         </div>
       </div>
     </div>
