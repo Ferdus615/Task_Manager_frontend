@@ -1,8 +1,8 @@
 "use client";
 
-const { createContext, useState, useEffect, useContext } = require("react");
+import { createContext, useState, useEffect, useContext } from "react";
 
-const TaskContext = createContext();
+const TaskContext = createContext(null);
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
@@ -21,12 +21,13 @@ const TaskProvider = ({ children }) => {
   }, [tasks]);
 
   // ====== add tasks ======
-  const handleAddTask = (task) => {
+  const addTask = ({ title, desc }) => {
     setTasks((prev) => [
       ...prev,
       {
         id: Date.now(),
-        ...task,
+        title,
+        desc,
         isCompleted: false,
         isArchived: false,
         isDeleted: false,
@@ -38,8 +39,8 @@ const TaskProvider = ({ children }) => {
   const handleCompletedTasks = (id) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
-      )
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task,
+      ),
     );
   };
 
@@ -48,8 +49,8 @@ const TaskProvider = ({ children }) => {
       prev.map((task) =>
         task.id === id
           ? { ...task, isArchived: !task.isArchived, isDeleted: false }
-          : task
-      )
+          : task,
+      ),
     );
   };
 
@@ -58,8 +59,8 @@ const TaskProvider = ({ children }) => {
       prev.map((task) =>
         task.id === id
           ? { ...task, isDeleted: !task.isDeleted, isArchived: false }
-          : task
-      )
+          : task,
+      ),
     );
   };
 
@@ -71,7 +72,7 @@ const TaskProvider = ({ children }) => {
     <TaskContext.Provider
       value={{
         tasks,
-        handleAddTask,
+        addTask,
         handleCompletedTasks,
         handleArchivedTasks,
         handleDeletedTasks,

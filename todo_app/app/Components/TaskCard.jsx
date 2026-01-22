@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import TaskDetailsModal from "./TaskDetailsModal";
+import TaskContent from "./texteditor/TaskContent";
 
 const TaskCard = ({
   id,
@@ -32,12 +33,13 @@ const TaskCard = ({
         ${isDeleted ? "border-[#9c2121]" : "border-[#3f3f4b]/0"}`}
     >
       <div className="flex flex-col max-h-60 overflow-hidden">
-        <span className="text-lg font-medium mb-2 text-[#fef9db]">{title}</span>
+        <h2 className="text-lg font-medium mb-2 text-[#fef9db]">{title}</h2>
+
         <hr className="text-[#fef9db]/20 mb-2" />
-        <span className="text-sm font-light mb-3 text-zinc-400 line-clamp-7">
-          {desc}
-        </span>
+
+        <TaskContent content={desc} />
       </div>
+
       <div className="flex pt-2 gap-7">
         {onCompleted && (
           <button
