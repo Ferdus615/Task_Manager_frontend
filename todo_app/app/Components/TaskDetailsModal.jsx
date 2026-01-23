@@ -33,9 +33,7 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
         [-ms-overflow-style:none] 
         [scrollbar-width:none]"
         >
-          {/* <EditorContent content={desc} /> */}
           <TaskContent content={desc} />
-          {/* <p className="text-sm font-light">{desc}</p> */}
         </div>
       </div>
     </div>

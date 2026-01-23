@@ -23,7 +23,7 @@ const TaskContent = ({ content }) => {
   if (!editor) return null;
 
   return (
-    <div className="text-[#91979d] mb-2">
+    <div className="text-zinc-300 mb-2">
       <EditorContent editor={editor} />
     </div>
   );

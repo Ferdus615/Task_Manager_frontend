@@ -97,7 +97,7 @@ const TaskCard = ({
           >
             <div
               className="flex flex-col gap-5 items-center absolute inset-0 m-auto w-fit h-fit p-6
-             rounded-lg bg-[#9c2121] z-50"
+             rounded-lg bg-[#9c2121] border-2 border-[#8b8b93] z-50"
             >
               <div>
                 <span className="font-normal text-sm">
