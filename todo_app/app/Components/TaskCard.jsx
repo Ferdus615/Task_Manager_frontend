@@ -25,10 +25,11 @@ const TaskCard = ({
     callback(id);
   };
 
+  //
   return (
     <div
       onClick={() => setShowDetails(true)}
-      className={`flex flex-col border-2 rounded-lg p-3 min-w-60 max-w-80 bg-[#272835] 
+      className={`break-inside-avoid flex flex-col border-2 rounded-lg p-3 min-w-60 max-w-80 mb-5 bg-[#272835] 
         ${isCompleted ? "border-[#22946e]" : "border-[#3f3f4b]/0"}
         ${isDeleted ? "border-[#9c2121]" : "border-[#3f3f4b]/0"}`}
     >

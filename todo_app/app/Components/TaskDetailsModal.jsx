@@ -9,12 +9,12 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 bg-[#272835]/70 backdrop-blur-sm z-50"
+      className="fixed inset-0 bg-[#272835]/70 backdrop-blur-xs z-50"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="flex flex-col absolute inset-0 m-auto w-fit h-fit max-w-[40%] max-h-[90%]
-         border-2 border-[#26242d] rounded-lg bg-[#121220] text-zinc-300 overflow-hidden"
+        className="flex flex-col absolute inset-0 m-auto w-[40%] h-fit max-h-[90%]
+         border-2 border-[#8b8b93] rounded-lg bg-[#272835] text-zinc-300 overflow-hidden"
       >
         <div className="flex gap-10 justify-between p-5 border-b border-[#272835]">
           <h2 className="text-xl font-bold">{title}</h2>

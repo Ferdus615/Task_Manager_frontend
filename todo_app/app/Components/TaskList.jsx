@@ -16,7 +16,7 @@ const TaskList = ({
       {emptyMsg}
     </p>
   ) : (
-    <div className="flex flex-wrap items-start gap-5 mt-10">
+    <div className="columns-[300px] gap-5 mt-5">
       {tasks.map((task) => (
         <TaskCard
           key={task.id}
