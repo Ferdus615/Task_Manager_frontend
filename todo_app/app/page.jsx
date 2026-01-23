@@ -13,6 +13,7 @@ function Page() {
     handleCompletedTasks,
     handleArchivedTasks,
     handleDeletedTasks,
+    reorderTask,
   } = useTasks();
 
   const activeTasks = tasks.filter(
@@ -35,6 +36,7 @@ function Page() {
           onCompleted={handleCompletedTasks}
           onArchived={handleArchivedTasks}
           onDeleted={handleDeletedTasks}
+          onReorder={reorderTask}
           emptyMsg={"No task yet! Please add task..."}
         />
       </div>

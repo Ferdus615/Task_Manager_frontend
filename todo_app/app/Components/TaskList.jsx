@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
+import MoveCard from "./MoveCard";
 import TaskCard from "./TaskCard";
 
 const TaskList = ({

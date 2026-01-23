@@ -7,7 +7,7 @@ import { Oldenburg } from "next/font/google";
 const TaskContext = createContext(null);
 
 const TaskProvider = ({ children }) => {
-  const reorderCard = (oldIndex, newIndex) => {
+  const reorderTask = (oldIndex, newIndex) => {
     setTasks((prev) => arrayMove(prev, oldIndex, newIndex));
   };
 
@@ -83,7 +83,7 @@ const TaskProvider = ({ children }) => {
         handleArchivedTasks,
         handleDeletedTasks,
         permanentDelete,
-        reorderCard,
+        reorderTask,
       }}
     >
       {children}
