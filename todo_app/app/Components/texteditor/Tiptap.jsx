@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
+import Placeholder from "@tiptap/extension-placeholder";
 import Menubar from "./Menubar";
 import { useState } from "react";
 import { useTasks } from "@/app/context/TaskContext";
@@ -19,10 +20,10 @@ const Tiptap = () => {
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
+      Placeholder.configure({
+        placeholder: "Add task here...",
+      }),
     ],
-
-    content: "<p>Add task here...</p>",
-
     editorProps: {
       attributes: {
         class: "p-2 text-md text-[#91979d] outline-none",
@@ -55,7 +56,7 @@ const Tiptap = () => {
       [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:text-xl [&_h3]:font-bold"
     >
       <Menubar editor={editor} />
-      <div>
+      <div className="border-1 rounded-lg p-3 border-[#5f676f]">
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -65,7 +66,7 @@ const Tiptap = () => {
         <EditorContent editor={editor} />
         <button
           onClick={handleSaveTask}
-          className="w-full mt-4 px-2 py-1 rounded bg-[#575762] hover:bg-[#5f676f]"
+          className="w-full mt-4 px-2 py-1 rounded-md border-1 border-[#5f676f] bg-[#121220] hover:bg-[#272835]"
         >
           Save Task
         </button>

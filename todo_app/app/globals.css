@@ -6,6 +6,14 @@ body {
   /* color: #e0e0e0; */
 }
 
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
 @layer base {
   button {
     cursor: pointer;
