@@ -1,10 +1,16 @@
 "use client";
 
 import { createContext, useState, useEffect, useContext } from "react";
+import { arrayMove } from "@dnd-kit/sortable";
+import { Oldenburg } from "next/font/google";
 
 const TaskContext = createContext(null);
 
 const TaskProvider = ({ children }) => {
+  const reorderCard = (oldIndex, newIndex) => {
+    setTasks((prev) => arrayMove(prev, oldIndex, newIndex));
+  };
+
   const [tasks, setTasks] = useState([]);
 
   // ====== load tasks ======
@@ -77,6 +83,7 @@ const TaskProvider = ({ children }) => {
         handleArchivedTasks,
         handleDeletedTasks,
         permanentDelete,
+        reorderCard,
       }}
     >
       {children}

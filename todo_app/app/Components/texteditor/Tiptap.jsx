@@ -26,7 +26,7 @@ const Tiptap = () => {
     ],
     editorProps: {
       attributes: {
-        class: "p-2 text-md text-[#91979d] outline-none",
+        class: "p-2 text-md text-zinc-300 outline-none",
       },
     },
 
@@ -61,7 +61,7 @@ const Tiptap = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title..."
-          className="w-full text-2xl font-bold text-[#91979d] p-2 rounded outline-none"
+          className="w-full text-2xl font-bold text-zinc-300 p-2 rounded outline-none"
         />
         <EditorContent editor={editor} />
         <button

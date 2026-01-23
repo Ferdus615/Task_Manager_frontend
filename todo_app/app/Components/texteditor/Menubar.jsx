@@ -4,7 +4,7 @@ const Menubar = ({ editor }) => {
   if (!editor) return null;
 
   return (
-    <div className="mb-5 p-3 rounded-md bg-[#272835] border-[#47505a]">
+    <div className="mb-5 p-2 rounded-md bg-[#272835] border-[#47505a]">
       <div className="flex flex-wrap gap-3 font-light text-sm">
         <button
           onMouseDown={(e) => {
