@@ -5,8 +5,14 @@ import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import { useEffect } from "react";
+import Menubar from "./Menubar";
 
-const TaskContent = ({ content, editable = false, onChange }) => {
+const TaskContent = ({
+  content,
+  editable = false,
+  onChange,
+  onEditorReady,
+}) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -34,8 +40,9 @@ const TaskContent = ({ content, editable = false, onChange }) => {
   useEffect(() => {
     if (editor && content) {
       editor.commands.setContent(content);
+      onEditorReady?.(editor);
     }
-  }, [editor, content]);
+  }, [editor, content, onEditorReady]);
 
   if (!editor) return null;
 

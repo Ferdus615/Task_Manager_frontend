@@ -5,12 +5,14 @@ import React, { useState } from "react";
 import TaskContent from "./texteditor/TaskContent";
 import { useTasks } from "../context/TaskContext";
 import Tiptap from "./texteditor/Tiptap";
+import Menubar from "./texteditor/Menubar";
 
 const TaskDetailsModal = ({ id, title, desc, onClose }) => {
   const { updateTask } = useTasks();
 
   const [editTitle, setEditTitle] = useState(title);
   const [editDesc, setEditDesc] = useState(desc);
+  const [editor, setEditor] = useState(null);
 
   const handleSave = () => {
     updateTask(id, { title: editTitle.trim(), desc: editDesc });
@@ -48,10 +50,17 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
         [-ms-overflow-style:none] 
         [scrollbar-width:none]"
         >
-          <TaskContent content={desc} editable onChange={setEditDesc} />
+          <TaskContent
+            content={desc}
+            editable
+            onChange={setEditDesc}
+            onEditorReady={setEditor}
+          />
         </div>
 
-        <div className="px-5 mb-5 flex justify-end gap-5">
+        <div className="px-5 m-3 flex justify-end gap-5">
+          <Menubar editor={editor} />
+
           <button
             onClick={onClose}
             className="px-5 py-1 rounded-md bg-[#3f3f4b]"
