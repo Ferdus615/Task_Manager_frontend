@@ -9,7 +9,7 @@ import Menubar from "./Menubar";
 import { useState } from "react";
 import { useTasks } from "@/app/context/TaskContext";
 
-const Tiptap = () => {
+const Tiptap = (value, onChange) => {
   const { addTask } = useTasks();
   const [title, setTitle] = useState("");
 
@@ -20,10 +20,12 @@ const Tiptap = () => {
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
+
       Placeholder.configure({
         placeholder: "Add task here...",
       }),
     ],
+
     editorProps: {
       attributes: {
         class: "p-2 text-md text-zinc-300 outline-none",

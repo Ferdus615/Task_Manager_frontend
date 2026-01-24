@@ -139,6 +139,7 @@ const TaskCard = ({
       <div>
         {showDetails && (
           <TaskDetailsModal
+            id={id}
             title={title}
             desc={desc}
             onClose={(e) => setShowDetails(false)}

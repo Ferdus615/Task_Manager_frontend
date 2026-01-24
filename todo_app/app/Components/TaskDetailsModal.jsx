@@ -1,11 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import TaskContent from "./texteditor/TaskContent";
-import { EditorContent } from "@tiptap/react";
+import { useTasks } from "../context/TaskContext";
+import Tiptap from "./texteditor/Tiptap";
 
-const TaskDetailsModal = ({ title, desc, onClose }) => {
+const TaskDetailsModal = ({ id, title, desc, onClose }) => {
+  const { updateTask } = useTasks();
+
+  const [editTitle, setEditTitle] = useState(title);
+  const [editDesc, setEditDesc] = useState(desc);
+
+  const handleSave = () => {
+    updateTask(id, { title: editTitle.trim(), desc: editDesc });
+    onClose();
+  };
+
   return (
     <div
       onClick={onClose}
@@ -18,6 +29,7 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
       >
         <div className="flex gap-10 justify-between p-5 border-b border-[#272835]">
           <h2 className="text-xl font-bold">{title}</h2>
+
           <div>
             <button
               onClick={onClose}
@@ -27,13 +39,19 @@ const TaskDetailsModal = ({ title, desc, onClose }) => {
             </button>
           </div>
         </div>
+
         <div
           className="p-5 flex-1 overflow-auto scrollbar-none 
         [&::-webkit-scrollbar]:hidden 
         [-ms-overflow-style:none] 
         [scrollbar-width:none]"
         >
-          <TaskContent content={desc} />
+          <TaskContent content={desc} editable onChange={setEditDesc} />
+        </div>
+
+        <div className="">
+          <button onClick={onClose}>Close</button>
+          <button onClick={handleSave}>Save</button>
         </div>
       </div>
     </div>

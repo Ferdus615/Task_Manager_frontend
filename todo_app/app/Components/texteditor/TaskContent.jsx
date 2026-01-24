@@ -4,8 +4,9 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
+import { useEffect } from "react";
 
-const TaskContent = ({ content }) => {
+const TaskContent = ({ content, editable = false, onChange }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -16,9 +17,19 @@ const TaskContent = ({ content }) => {
     ],
 
     content,
-    editable: false,
+    editable,
     immediatelyRender: false,
+
+    onUpdate: ({ editor }) => {
+      if (onChange) onChange(editor.getJSON());
+    },
   });
+
+  useEffect(() => {
+    if (editor && content) {
+      editor.commands.setContent(content);
+    }
+  }, [editor, content]);
 
   if (!editor) return null;
 
