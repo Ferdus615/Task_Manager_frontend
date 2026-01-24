@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const Menubar = ({ editor, style }) => {
   if (!editor) return null;
 
@@ -16,8 +18,9 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        H1
+        <Image src="/textEditor/h1.png" height={15} width={15} alt="btn" />
       </button>
+
       <button
         onMouseDown={(e) => {
           e.preventDefault();
@@ -29,7 +32,7 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        H2
+        <Image src="/textEditor/h2.png" height={15} width={15} alt="btn" />
       </button>
 
       <button
@@ -43,8 +46,9 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        H3
+        <Image src="/textEditor/h3.png" height={15} width={15} alt="btn" />
       </button>
+
       <button
         onMouseDown={(e) => {
           e.preventDefault();
@@ -54,7 +58,12 @@ const Menubar = ({ editor, style }) => {
           editor.isActive("paragraph") ? "bg-[#121220]" : "hover:bg-[#121220]"
         }`}
       >
-        Paragraph
+        <Image
+          src="/textEditor/paragraph.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
       </button>
 
       <button
@@ -66,7 +75,7 @@ const Menubar = ({ editor, style }) => {
           editor.isActive("bold") ? "bg-[#121220]" : "hover:bg-[#121220]"
         }`}
       >
-        Bold
+        <Image src="/textEditor/bold.png" height={15} width={15} alt="btn" />
       </button>
 
       <button
@@ -75,24 +84,32 @@ const Menubar = ({ editor, style }) => {
           editor.isActive("italic") ? "bg-[#121220]" : "hover:bg-[#121220]"
         }`}
       >
-        Italic
+        <Image src="/textEditor/italic.png" height={15} width={15} alt="btn" />
       </button>
+
       <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
           editor.isActive("strike") ? "bg-[#121220]" : "hover:bg-[#121220]"
         }`}
       >
-        Strike
+        <Image src="/textEditor/strike.png" height={15} width={15} alt="btn" />
       </button>
+
       <button
         onClick={() => editor.chain().focus().toggleHighlight().run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
           editor.isActive("highlight") ? "bg-[#121220]" : "hover:bg-[#121220]"
         }`}
       >
-        Highlight
+        <Image
+          src="/textEditor/highlighter.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
       </button>
+
       <button
         onClick={() => editor.chain().focus().setTextAlign("left").run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
@@ -101,8 +118,14 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        Left
+        <Image
+          src="/textEditor/align-left.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
       </button>
+
       <button
         onClick={() => editor.chain().focus().setTextAlign("center").run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
@@ -111,8 +134,14 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        Center
+        <Image
+          src="/textEditor/align-center.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
       </button>
+
       <button
         onClick={() => editor.chain().focus().setTextAlign("right").run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
@@ -121,8 +150,14 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        Right
+        <Image
+          src="/textEditor/align-right.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
       </button>
+
       <button
         onClick={() => editor.chain().focus().setTextAlign("justify").run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
@@ -131,7 +166,12 @@ const Menubar = ({ editor, style }) => {
             : "hover:bg-[#121220]"
         }`}
       >
-        Justify
+        <Image
+          src="/textEditor/align-justify.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
       </button>
     </div>
   );

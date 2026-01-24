@@ -58,21 +58,23 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
           />
         </div>
 
-        <div className="px-5 m-3 flex justify-end gap-5">
-          <Menubar editor={editor} />
+        <div className="px-5 m-3 flex justify-between gap-5">
+          <Menubar editor={editor} style="text-[15px]" />
 
-          <button
-            onClick={onClose}
-            className="px-5 py-1 rounded-md bg-[#3f3f4b]"
-          >
-            Close
-          </button>
-          <button
-            onClick={handleSave}
-            className="px-5 py-1 rounded-md text-[#272835] bg-[#47d5a6]"
-          >
-            Save
-          </button>
+          <div className="flex gap-5">
+            <button
+              onClick={onClose}
+              className="px-5 py-1 rounded-md bg-[#3f3f4b]"
+            >
+              Close
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-5 py-1 rounded-md text-[#272835] bg-[#47d5a6]"
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </div>
