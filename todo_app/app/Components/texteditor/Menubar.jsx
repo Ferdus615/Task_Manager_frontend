@@ -88,6 +88,20 @@ const Menubar = ({ editor, style }) => {
       </button>
 
       <button
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+        className={`p-[5px] bg-[#] rounded-md transition ${
+          editor.isActive("italic") ? "bg-[#121220]" : "hover:bg-[#121220]"
+        }`}
+      >
+        <Image
+          src="/textEditor/underline.png"
+          height={15}
+          width={15}
+          alt="btn"
+        />
+      </button>
+
+      <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={`p-[5px] bg-[#] rounded-md transition ${
           editor.isActive("strike") ? "bg-[#121220]" : "hover:bg-[#121220]"

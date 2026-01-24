@@ -58,8 +58,11 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
           />
         </div>
 
-        <div className="px-5 m-3 flex justify-between gap-5">
-          <Menubar editor={editor} style="text-[15px]" />
+        <div className=" border-t-1 py-5 px-5 flex justify-between gap-5">
+          <Menubar
+            editor={editor}
+            style="flex flex-wrap justify-around gap-3"
+          />
 
           <div className="flex gap-5">
             <button
