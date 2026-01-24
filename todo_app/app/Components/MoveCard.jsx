@@ -13,8 +13,13 @@ const MoveCard = ({
 }) => {
   if (!task || !task.id) return null;
 
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: task.id });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id: task.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -22,13 +27,14 @@ const MoveCard = ({
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={style}>
       <TaskCard
         {...task}
         onCompleted={onCompleted}
         onArchived={onArchived}
         onDeleted={onDeleted}
         onPermanentDelete={onPermanentDelete}
+        dragHandleProps={{ ...attributes, ...listeners }}
       />
     </div>
   );
