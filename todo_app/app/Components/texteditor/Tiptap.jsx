@@ -57,7 +57,11 @@ const Tiptap = (value, onChange) => {
       className="min-w-[30%] max-w-[50%] mx-auto rounded-lg text-[#fef9db]
       [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:text-xl [&_h3]:font-bold"
     >
-      <Menubar editor={editor} />
+      <Menubar
+        editor={editor}
+        style="mb-5 p-2 rounded-md bg-[#272835] border-[#47505a]
+              flex flex-wrap gap-3 font-light text-sm"
+      />
       <div className="border-1 rounded-lg p-3 border-[#5f676f]">
         <input
           value={title}

@@ -16,6 +16,12 @@ const TaskContent = ({ content, editable = false, onChange }) => {
       }),
     ],
 
+    editorProps: {
+      attributes: {
+        class: "outline-none",
+      },
+    },
+
     content,
     editable,
     immediatelyRender: false,

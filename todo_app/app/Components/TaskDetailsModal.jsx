@@ -28,7 +28,9 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
          border-2 border-[#8b8b93] rounded-lg bg-[#272835] text-zinc-300 overflow-hidden"
       >
         <div className="flex gap-10 justify-between p-5 border-b border-[#272835]">
-          <h2 className="text-xl font-bold">{title}</h2>
+          <div>
+            <h2 className="text-xl font-bold">{title}</h2>
+          </div>
 
           <div>
             <button
@@ -49,9 +51,19 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
           <TaskContent content={desc} editable onChange={setEditDesc} />
         </div>
 
-        <div className="">
-          <button onClick={onClose}>Close</button>
-          <button onClick={handleSave}>Save</button>
+        <div className="px-5 mb-5 flex justify-end gap-5">
+          <button
+            onClick={onClose}
+            className="px-5 py-1 rounded-md bg-[#3f3f4b]"
+          >
+            Close
+          </button>
+          <button
+            onClick={handleSave}
+            className="px-5 py-1 rounded-md text-[#272835] bg-[#47d5a6]"
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>
