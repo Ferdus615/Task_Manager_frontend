@@ -33,7 +33,7 @@ const TaskCard = ({
         ${isCompleted ? "border-[#22946e]" : "border-[#3f3f4b]/0"}
         ${isDeleted ? "border-[#9c2121]" : "border-[#3f3f4b]/0"}`}
     >
-      <div className="flex flex-col max-h-[500px] overflow-hidden">
+      <div className="flex flex-col max-h-[700px] overflow-hidden">
         <h2 className="text-lg font-medium mb-2 text-[#fef9db]">{title}</h2>
 
         <hr className="text-[#fef9db]/20 mb-2" />
