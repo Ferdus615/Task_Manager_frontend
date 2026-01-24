@@ -4,17 +4,17 @@ const Menubar = ({ editor }) => {
   if (!editor) return null;
 
   return (
-    <div className="mb-5 border-1 p-3 rounded-lg bg-[#1b2631] border-[#47505a]">
+    <div className="mb-5 p-2 rounded-md bg-[#272835] border-[#47505a]">
       <div className="flex flex-wrap gap-3 font-light text-sm">
         <button
           onMouseDown={(e) => {
             e.preventDefault();
             editor.chain().focus().toggleHeading({ level: 1 }).run();
           }}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive("heading", { level: 1 })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           H1
@@ -24,10 +24,10 @@ const Menubar = ({ editor }) => {
             e.preventDefault();
             editor.chain().focus().toggleHeading({ level: 2 }).run();
           }}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive("heading", { level: 2 })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           H2
@@ -38,10 +38,10 @@ const Menubar = ({ editor }) => {
             e.preventDefault();
             editor.chain().focus().toggleHeading({ level: 3 }).run();
           }}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive("heading", { level: 3 })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           H3
@@ -51,8 +51,8 @@ const Menubar = ({ editor }) => {
             e.preventDefault();
             editor.chain().focus().setParagraph().run();
           }}
-          className={`p-1 bg-[#] rounded-lg transition ${
-            editor.isActive("paragraph") ? "bg-[#5f676f]" : "hover:bg-[#91979d]"
+          className={`p-[5px] bg-[#] rounded-md transition ${
+            editor.isActive("paragraph") ? "bg-[#121220]" : "hover:bg-[#121220]"
           }`}
         >
           Paragraph
@@ -63,8 +63,8 @@ const Menubar = ({ editor }) => {
             e.preventDefault();
             editor.chain().focus().toggleBold().run();
           }}
-          className={`p-1 bg-[#] rounded-lg transition ${
-            editor.isActive("bold") ? "bg-[#5f676f]" : "hover:bg-[#91979d]"
+          className={`p-[5px] bg-[#] rounded-md transition ${
+            editor.isActive("bold") ? "bg-[#121220]" : "hover:bg-[#121220]"
           }`}
         >
           Bold
@@ -72,64 +72,64 @@ const Menubar = ({ editor }) => {
 
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
-            editor.isActive("italic") ? "bg-[#5f676f]" : "hover:bg-[#91979d]"
+          className={`p-[5px] bg-[#] rounded-md transition ${
+            editor.isActive("italic") ? "bg-[#121220]" : "hover:bg-[#121220]"
           }`}
         >
           Italic
         </button>
         <button
           onClick={() => editor.chain().focus().toggleStrike().run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
-            editor.isActive("strike") ? "bg-[#5f676f]" : "hover:bg-[#91979d]"
+          className={`p-[5px] bg-[#] rounded-md transition ${
+            editor.isActive("strike") ? "bg-[#121220]" : "hover:bg-[#121220]"
           }`}
         >
           Strike
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHighlight().run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
-            editor.isActive("highlight") ? "bg-[#5f676f]" : "hover:bg-[#91979d]"
+          className={`p-[5px] bg-[#] rounded-md transition ${
+            editor.isActive("highlight") ? "bg-[#121220]" : "hover:bg-[#121220]"
           }`}
         >
           Highlight
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign("left").run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive({ textAlign: "left" })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           Left
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign("center").run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive({ textAlign: "center" })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           Center
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign("right").run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive({ textAlign: "right" })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           Right
         </button>
         <button
           onClick={() => editor.chain().focus().setTextAlign("justify").run()}
-          className={`p-1 bg-[#] rounded-lg transition ${
+          className={`p-[5px] bg-[#] rounded-md transition ${
             editor.isActive({ textAlign: "justify" })
-              ? "bg-[#5f676f]"
-              : "hover:bg-[#91979d]"
+              ? "bg-[#121220]"
+              : "hover:bg-[#121220]"
           }`}
         >
           Justify

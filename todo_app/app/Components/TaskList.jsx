@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
+import MoveCard from "./MoveCard";
 import TaskCard from "./TaskCard";
 
 const TaskList = ({
@@ -16,7 +19,7 @@ const TaskList = ({
       {emptyMsg}
     </p>
   ) : (
-    <div className="flex flex-wrap items-start gap-5 mt-10">
+    <div className="columns-[300px] gap-5 mt-5">
       {tasks.map((task) => (
         <TaskCard
           key={task.id}
