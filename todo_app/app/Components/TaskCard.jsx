@@ -34,16 +34,13 @@ const TaskCard = ({
         ${isCompleted ? "border-[#22946e]" : "border-[#3f3f4b]/0"}
         ${isDeleted ? "border-[#9c2121]" : "border-[#3f3f4b]/0"}`}
     >
-      <div
-        {...dragHandleProps}
-        className="flex flex-col max-h-[700px] overflow-hidden"
-      >
+      <div className="flex flex-col max-h-[700px] overflow-hidden">
         <div
           {...dragHandleProps}
           onClick={(e) => e.stopPropagation()}
-          className="cursor-grab text-zinc-400 text-xs mb-2"
+          className="flex justify-center cursor-grab active:cursor-grabbing text-zinc-400 text-xs mb-2"
         >
-          Drag
+          <Image src="./drag.svg" height={15} width={18} alt="Drag handler" />
         </div>
 
         <h2 className="text-lg font-medium mb-2 text-[#fef9db]">{title}</h2>
@@ -142,6 +139,7 @@ const TaskCard = ({
       <div>
         {showDetails && (
           <TaskDetailsModal
+            id={id}
             title={title}
             desc={desc}
             onClose={(e) => setShowDetails(false)}
