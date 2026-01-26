@@ -31,17 +31,17 @@ const Sidebar = () => {
   return (
     <aside className="flex flex-col h-screen min-w-35 p-5 bg-[#272835] shadow-2xl text-[#fef9db]">
       {/* Logo */}
-      <div className="flex flex-col items-center gap-2 mb-10">
+      <div className="flex flex-col items-center gap-2 mb-5">
         <div className="flex justify-center items-center">
           <Image
-            src="/logo.svg"
-            height={30}
-            width={30}
+            src="/logo-2.png"
+            height={50}
+            width={90}
             alt="logo"
             className=""
           />
         </div>
-        <span className="text-md font-light">ToDoList</span>
+        {/* <span className="text-md font-light">Task Manager</span> */}
       </div>
 
       {/* Navigation */}
