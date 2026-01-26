@@ -59,8 +59,7 @@ const Tiptap = (value, onChange) => {
     >
       <Menubar
         editor={editor}
-        style="mb-5 p-2 rounded-md bg-[#272835] border-[#47505a]
-              flex flex-wrap justify-between font-light text-sm"
+        style="mb-5 p-2 rounded-md bg-[#272835] flex flex-wrap justify-between"
       />
       <div className="border-1 rounded-lg p-3 border-[#5f676f]">
         <input
