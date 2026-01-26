@@ -34,14 +34,14 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
             <h2 className="text-xl font-bold">{title}</h2>
           </div>
 
-          <div>
+          {/* <div>
             <button
               onClick={onClose}
               className="border p-2 rounded-full hover:cursor-pointer"
             >
               <Image src="/crossMark.svg" width={10} height={10} alt="Close" />
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div
@@ -64,7 +64,7 @@ const TaskDetailsModal = ({ id, title, desc, onClose }) => {
             style="flex flex-wrap justify-around gap-3"
           />
 
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
             <button
               onClick={onClose}
               className="px-5 py-1 rounded-md bg-[#3f3f4b]"
