@@ -16,7 +16,7 @@ export const metadata = {
   icons: {
     icon: "/icon.svg", // Reference the file in your /public directory
   },
-  title: "Ferdus's Todo App",
+  title: "Ferdus's Task Manger",
   description: "Developed By Ferdus Rhaman Khan.",
 };
 
