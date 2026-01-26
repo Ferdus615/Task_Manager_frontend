@@ -27,7 +27,7 @@ function Page() {
 
       {/* Main content */}
       <div className="flex flex-col gap-5 flex-grow p-5 overflow-y-auto">
-        <Title title={"My ToDo List"} />
+        <Title title={"My Task Manager"} />
 
         <Tiptap />
 
