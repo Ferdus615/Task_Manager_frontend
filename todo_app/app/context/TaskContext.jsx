@@ -2,13 +2,19 @@
 
 import { createContext, useState, useEffect, useContext } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
-import { Oldenburg } from "next/font/google";
 
 const TaskContext = createContext(null);
 
 const TaskProvider = ({ children }) => {
-  const reorderTask = (oldIndex, newIndex) => {
-    setTasks((prev) => arrayMove(prev, oldIndex, newIndex));
+  const reorderTask = (activeId, overId) => {
+    setTasks((prev) => {
+      const oldIndex = prev.findIndex((t) => t.id === activeId);
+      const newIndex = prev.findIndex((t) => t.id === overId);
+
+      if (oldIndex === -1 || newIndex === -1) return prev;
+
+      return arrayMove(prev, oldIndex, newIndex);
+    });
   };
 
   const [tasks, setTasks] = useState([]);
@@ -74,6 +80,12 @@ const TaskProvider = ({ children }) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   };
 
+  const updateTask = (id, updates) => {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, ...updates } : task)),
+    );
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -83,6 +95,7 @@ const TaskProvider = ({ children }) => {
         handleArchivedTasks,
         handleDeletedTasks,
         permanentDelete,
+        updateTask,
         reorderTask,
       }}
     >

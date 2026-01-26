@@ -9,7 +9,7 @@ import Menubar from "./Menubar";
 import { useState } from "react";
 import { useTasks } from "@/app/context/TaskContext";
 
-const Tiptap = () => {
+const Tiptap = (value, onChange) => {
   const { addTask } = useTasks();
   const [title, setTitle] = useState("");
 
@@ -20,10 +20,12 @@ const Tiptap = () => {
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
+
       Placeholder.configure({
         placeholder: "Add task here...",
       }),
     ],
+
     editorProps: {
       attributes: {
         class: "p-2 text-md text-zinc-300 outline-none",
@@ -52,10 +54,14 @@ const Tiptap = () => {
 
   return (
     <div
-      className="min-w-[30%] max-w-[50%] mx-auto rounded-lg text-[#fef9db]
+      className="min-w-[30%] max-w-[50%] mx-auto rounded-lg text-[#91979d]
       [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:text-xl [&_h3]:font-bold"
     >
-      <Menubar editor={editor} />
+      <Menubar
+        editor={editor}
+        style="mb-5 p-2 rounded-md bg-[#272835] border-[#47505a]
+              flex flex-wrap justify-between font-light text-sm"
+      />
       <div className="border-1 rounded-lg p-3 border-[#5f676f]">
         <input
           value={title}
