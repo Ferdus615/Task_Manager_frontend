@@ -71,3 +71,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+<img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/97b8ee26-f77a-4898-829e-ed46655965d6" />
